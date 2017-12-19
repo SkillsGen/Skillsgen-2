@@ -19,6 +19,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     var month = getCurrentMonthAndYear().month
     var year = getCurrentMonthAndYear().year
     
+    
     @IBAction func prevButtonTapped(_ sender: Any) {
         if self.month > 1 {
             self.month -= 1
@@ -28,6 +29,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         self.updateUI()
     }
+    
     @IBAction func nextButtonTapped(_ sender: Any) {
         if month < 12 {
             month += 1
@@ -39,8 +41,6 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +48,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         updateUI()
     }
 
+    
     func updateUI() {
         
         backendController.fetchBookings(month: month, year: year) { (bookings) in
