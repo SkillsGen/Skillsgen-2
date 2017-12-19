@@ -15,3 +15,25 @@ func intToBool(_ int:Int) -> Bool {
         return false
     }
 }
+
+func getCurrentMonthAndYear() -> (month: Int, year: Int) {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMYYYY"
+    let date = Date()
+    let dateString = dateFormatter.string(from: date)
+    let seperatorIndex = dateString.index(dateString.startIndex, offsetBy: 2)
+    let month = dateString.prefix(upTo: seperatorIndex)
+    let year = dateString.suffix(from: seperatorIndex)
+    
+    return (Int(month)!, Int(year)!)
+}
+
+func createDateLabelString(month: Int, year: Int) -> String{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM"
+    let date = dateFormatter.date(from: String(month))!
+    dateFormatter.dateFormat = "MMMM"
+    let monthString = dateFormatter.string(from: date)
+    
+    return "< " + monthString + " - " + String(year) + " >"
+}

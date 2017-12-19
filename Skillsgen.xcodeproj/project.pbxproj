@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		205F53BB1FE978CE0054FCBC /* BookingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F53BA1FE978CE0054FCBC /* BookingsViewController.swift */; };
 		207681DB1FE94175006ACFC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207681DA1FE94175006ACFC3 /* AppDelegate.swift */; };
 		207681E01FE94175006ACFC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207681DE1FE94175006ACFC3 /* Main.storyboard */; };
 		207681E21FE94175006ACFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207681E11FE94175006ACFC3 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		205F53BA1FE978CE0054FCBC /* BookingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsViewController.swift; sourceTree = "<group>"; };
 		207681D71FE94175006ACFC3 /* Skillsgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skillsgen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207681DA1FE94175006ACFC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207681DF1FE94175006ACFC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				207681F61FE94286006ACFC3 /* BackendController.swift */,
 				207681DA1FE94175006ACFC3 /* AppDelegate.swift */,
 				207681DE1FE94175006ACFC3 /* Main.storyboard */,
+				205F53BA1FE978CE0054FCBC /* BookingsViewController.swift */,
 				207681F91FE94391006ACFC3 /* BookingTableViewController.swift */,
 				207681E11FE94175006ACFC3 /* Assets.xcassets */,
 				207681E31FE94175006ACFC3 /* LaunchScreen.storyboard */,
@@ -167,6 +170,7 @@
 				207681F51FE94253006ACFC3 /* Delegate.swift in Sources */,
 				207681ED1FE94190006ACFC3 /* Booking.swift in Sources */,
 				207681EF1FE941C2006ACFC3 /* Order.swift in Sources */,
+				205F53BB1FE978CE0054FCBC /* BookingsViewController.swift in Sources */,
 				207681F71FE94286006ACFC3 /* BackendController.swift in Sources */,
 				207681FA1FE94391006ACFC3 /* BookingTableViewController.swift in Sources */,
 				207681DB1FE94175006ACFC3 /* AppDelegate.swift in Sources */,
