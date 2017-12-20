@@ -50,13 +50,14 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     
     func updateUI() {
-        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         backendController.fetchBookings(month: month, year: year) { (bookings) in
             if let bookings = bookings {
                 DispatchQueue.main.async {
                     self.bookings = bookings
                     self.tableView.reloadData()
                     self.dateLabel.text = createDateLabelString(month: self.month, year: self.year)
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
                 
             }
@@ -75,21 +76,40 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BookingCellIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookingCellIdentifier", for: indexPath) as! BookingTableViewCell
         
-        cell.textLabel?.text = String(bookings[indexPath.row].id)
-        cell.detailTextLabel?.text = bookings[indexPath.row].course
+        cell.cellDateFormatter.dateFormat = "d"
+        let booking = bookings[indexPath.row]
+        
+        cell.dayOfMonthLabel?.text = cell.cellDateFormatter.string(from: booking.date)
+        cell.courseLabel?.text = booking.course
+        cell.trainerLabel?.text = booking.trainer
+        cell.noOfDelegatesLabel?.text = String(booking.delcount)
+        
+        if let customer = booking.customer {
+            cell.customerLabel?.text = customer
+            cell.customerLabel.textColor = .green
+        } else {
+            cell.customerLabel?.text = "Public"
+            cell.customerLabel.textColor = .blue
+        }
         return cell
     }
 
-    /*
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "BookingSegue" {
+            let destination = segue.destination as! BookingViewController
+            let selectedIndexPath = tableView.indexPathForSelectedRow
+            destination.booking = bookings[selectedIndexPath!.row]
+        }
+        
     }
-    */
+    
 
 }
