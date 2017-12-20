@@ -16,11 +16,19 @@ class BackendController {
     
     func fetchBookings(month: Int, year: Int, completion: @escaping ([Booking]?) -> Void)  {
         
+        let yearString = String(year)
+        var monthString = ""
+        if month < 10 {
+            monthString = "0" + String(month)
+        } else {
+            monthString = String(month)
+        }
+        
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)!
         components.queryItems = [
             URLQueryItem(name: "query", value: "booking"),
-            URLQueryItem(name: "mm", value: String(month)),
-            URLQueryItem(name: "yyyy", value: String(year))
+            URLQueryItem(name: "mm", value: monthString),
+            URLQueryItem(name: "yyyy", value: yearString)
         ]
         let url = components.url!
         
