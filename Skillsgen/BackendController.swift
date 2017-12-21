@@ -11,9 +11,6 @@ import Foundation
 class BackendController {
     static let shared = BackendController()
     
-    let baseURL = URL(string: "http://0.0.0.0:5000/appinterface")!
-    
-    
     func fetchBookings(month: Int, year: Int, completion: @escaping ([Booking]?) -> Void)  {
         
         let yearString = String(year)
@@ -24,11 +21,13 @@ class BackendController {
             monthString = String(month)
         }
         
-        var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)!
+        var components = URLComponents(url: Config.baseURL, resolvingAgainstBaseURL: true)!
         components.queryItems = [
             URLQueryItem(name: "query", value: "booking"),
             URLQueryItem(name: "mm", value: monthString),
-            URLQueryItem(name: "yyyy", value: yearString)
+            URLQueryItem(name: "yyyy", value: yearString),
+            URLQueryItem(name: Config.authQuery, value: Config.authValue)
+            
         ]
         let url = components.url!
         
