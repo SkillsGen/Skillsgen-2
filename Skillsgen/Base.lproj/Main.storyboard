@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Bookings View Controller-->
+        <!--Bookings-->
         <scene sceneID="mbe-yM-c9n">
             <objects>
                 <viewController id="4Qn-gi-D8W" customClass="BookingsViewController" customModule="Skillsgen" customModuleProvider="target" sceneMemberID="viewController">
@@ -158,7 +158,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1F9-wR-4xG"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Jqc-xX-gvK"/>
+                    <navigationItem key="navigationItem" title="Bookings" id="Jqc-xX-gvK"/>
                     <connections>
                         <outlet property="dateLabel" destination="dAl-dv-VYb" id="oOW-He-3LB"/>
                         <outlet property="tableView" destination="0Lq-PH-252" id="Bv3-5T-fdN"/>
