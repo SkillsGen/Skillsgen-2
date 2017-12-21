@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201DB5561FEA6A170080C845 /* BookingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201DB5551FEA6A170080C845 /* BookingTableViewCell.swift */; };
+		201DB5581FEA74B40080C845 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201DB5571FEA74B40080C845 /* BookingViewController.swift */; };
 		205F53BB1FE978CE0054FCBC /* BookingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F53BA1FE978CE0054FCBC /* BookingsViewController.swift */; };
 		207681DB1FE94175006ACFC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207681DA1FE94175006ACFC3 /* AppDelegate.swift */; };
 		207681E01FE94175006ACFC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207681DE1FE94175006ACFC3 /* Main.storyboard */; };
@@ -18,10 +20,13 @@
 		207681F31FE94209006ACFC3 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207681F21FE94209006ACFC3 /* Helpers.swift */; };
 		207681F51FE94253006ACFC3 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207681F41FE94253006ACFC3 /* Delegate.swift */; };
 		207681F71FE94286006ACFC3 /* BackendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207681F61FE94286006ACFC3 /* BackendController.swift */; };
-		207681FA1FE94391006ACFC3 /* BookingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207681F91FE94391006ACFC3 /* BookingTableViewController.swift */; };
+		207797B11FEBC974001CE80A /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207797B01FEBC973001CE80A /* OrderViewController.swift */; };
+		207797B31FEBDD7A001CE80A /* LineItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207797B21FEBDD7A001CE80A /* LineItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		201DB5551FEA6A170080C845 /* BookingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTableViewCell.swift; sourceTree = "<group>"; };
+		201DB5571FEA74B40080C845 /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		205F53BA1FE978CE0054FCBC /* BookingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsViewController.swift; sourceTree = "<group>"; };
 		207681D71FE94175006ACFC3 /* Skillsgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skillsgen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207681DA1FE94175006ACFC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +40,8 @@
 		207681F21FE94209006ACFC3 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		207681F41FE94253006ACFC3 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		207681F61FE94286006ACFC3 /* BackendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendController.swift; sourceTree = "<group>"; };
-		207681F91FE94391006ACFC3 /* BookingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTableViewController.swift; sourceTree = "<group>"; };
+		207797B01FEBC973001CE80A /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		207797B21FEBDD7A001CE80A /* LineItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +80,10 @@
 				207681DA1FE94175006ACFC3 /* AppDelegate.swift */,
 				207681DE1FE94175006ACFC3 /* Main.storyboard */,
 				205F53BA1FE978CE0054FCBC /* BookingsViewController.swift */,
-				207681F91FE94391006ACFC3 /* BookingTableViewController.swift */,
+				201DB5551FEA6A170080C845 /* BookingTableViewCell.swift */,
+				201DB5571FEA74B40080C845 /* BookingViewController.swift */,
+				207797B01FEBC973001CE80A /* OrderViewController.swift */,
+				207797B21FEBDD7A001CE80A /* LineItemTableViewCell.swift */,
 				207681E11FE94175006ACFC3 /* Assets.xcassets */,
 				207681E31FE94175006ACFC3 /* LaunchScreen.storyboard */,
 				207681E61FE94175006ACFC3 /* Info.plist */,
@@ -169,11 +178,14 @@
 				207681F11FE941EC006ACFC3 /* LineItem.swift in Sources */,
 				207681F51FE94253006ACFC3 /* Delegate.swift in Sources */,
 				207681ED1FE94190006ACFC3 /* Booking.swift in Sources */,
+				207797B31FEBDD7A001CE80A /* LineItemTableViewCell.swift in Sources */,
 				207681EF1FE941C2006ACFC3 /* Order.swift in Sources */,
 				205F53BB1FE978CE0054FCBC /* BookingsViewController.swift in Sources */,
 				207681F71FE94286006ACFC3 /* BackendController.swift in Sources */,
-				207681FA1FE94391006ACFC3 /* BookingTableViewController.swift in Sources */,
 				207681DB1FE94175006ACFC3 /* AppDelegate.swift in Sources */,
+				201DB5581FEA74B40080C845 /* BookingViewController.swift in Sources */,
+				207797B11FEBC974001CE80A /* OrderViewController.swift in Sources */,
+				201DB5561FEA6A170080C845 /* BookingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
