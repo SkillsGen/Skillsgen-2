@@ -51,7 +51,7 @@
                                 <rect key="frame" x="0.0" y="109" width="414" height="627"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BookingCellIdentifier" rowHeight="80" id="3sk-rO-6xO" customClass="BookingTableViewCell" customModule="Skillsgen" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BookingCellIdentifier" rowHeight="80" id="3sk-rO-6xO" customClass="BookingTableViewCell" customModule="Skillsgen" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3sk-rO-6xO" id="Z2Y-o2-doy">
@@ -74,13 +74,13 @@
                                                             <rect key="frame" x="60" y="0.0" width="221" height="79.666666666666671"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Using Excel Level One" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiI-nj-kwO">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="221" height="39.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="221" height="40"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liverpool Hope University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHa-vK-v8b">
-                                                                    <rect key="frame" x="0.0" y="39.666666666666664" width="221" height="39.999999999999993"/>
+                                                                    <rect key="frame" x="0.0" y="40" width="221" height="39.666666666666657"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -91,13 +91,13 @@
                                                             <rect key="frame" x="281" y="0.0" width="100" height="79.666666666666671"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zuk-ae-yJI">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="39.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark McKenna" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-Vn-2Jl">
-                                                                    <rect key="frame" x="0.0" y="39.666666666666664" width="100" height="39.999999999999993"/>
+                                                                    <rect key="frame" x="0.0" y="40" width="100" height="39.666666666666657"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -167,6 +167,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysR-sC-hse" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1478.2608695652175" y="163.04347826086959"/>
+        </scene>
+        <!--Order-->
+        <scene sceneID="hgu-8t-ErX">
+            <objects>
+                <viewController title="Order" id="VFn-pu-J6R" customClass="OrderViewController" customModule="Skillsgen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fCS-Na-OlX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2Nn-Va-Iac"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Len-kD-NZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3023" y="163"/>
         </scene>
         <!--Booking-->
         <scene sceneID="HzL-1w-St1">
@@ -273,6 +288,9 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="VFn-pu-J6R" kind="show" identifier="OrderSegue" id="Epy-fI-4gg"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>

@@ -52,7 +52,8 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if tableView == self.ordersTableView {
             cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath)
             if let order = booking?.orders![indexPath.row] {
-                cell!.textLabel?.text = order.contact
+                cell!.textLabel?.text = order.customer
+                cell!.detailTextLabel?.text = "£" + String(order.totalWithVat)
             }
         }
         
@@ -109,14 +110,17 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "OrderSegue" {
+            let destination = segue.destination as! OrderViewController
+            let selectedIndexPath = ordersTableView.indexPathForSelectedRow!
+            destination.order = booking!.orders![selectedIndexPath.row]
+        }
     }
-    */
+    
 
 }
