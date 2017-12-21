@@ -330,6 +330,7 @@
                                                 <constraint firstItem="qHc-Wv-47D" firstAttribute="leading" secondItem="oeI-gS-X5R" secondAttribute="leading" id="aHo-fs-c87"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.9547501692" green="0.95322034759999996" blue="0.97994251939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="48F-8P-kec" id="QZK-gK-cbl"/>
                                             <outlet property="quantityLabel" destination="hto-dI-s0I" id="3dh-lp-0Lw"/>
@@ -532,6 +533,7 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.9547501692" green="0.95322034759999996" blue="0.97994251939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="VFn-pu-J6R" kind="show" identifier="OrderSegue" id="Epy-fI-4gg"/>
                                                 </connections>

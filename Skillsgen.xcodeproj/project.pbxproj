@@ -10,6 +10,7 @@
 		201DB5561FEA6A170080C845 /* BookingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201DB5551FEA6A170080C845 /* BookingTableViewCell.swift */; };
 		201DB5581FEA74B40080C845 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201DB5571FEA74B40080C845 /* BookingViewController.swift */; };
 		205F53BB1FE978CE0054FCBC /* BookingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F53BA1FE978CE0054FCBC /* BookingsViewController.swift */; };
+		206A3A481FEC325D00BDFE96 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206A3A471FEC325D00BDFE96 /* Config.swift */; };
 		207681DB1FE94175006ACFC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207681DA1FE94175006ACFC3 /* AppDelegate.swift */; };
 		207681E01FE94175006ACFC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207681DE1FE94175006ACFC3 /* Main.storyboard */; };
 		207681E21FE94175006ACFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207681E11FE94175006ACFC3 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		201DB5551FEA6A170080C845 /* BookingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTableViewCell.swift; sourceTree = "<group>"; };
 		201DB5571FEA74B40080C845 /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		205F53BA1FE978CE0054FCBC /* BookingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsViewController.swift; sourceTree = "<group>"; };
+		206A3A471FEC325D00BDFE96 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		207681D71FE94175006ACFC3 /* Skillsgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skillsgen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207681DA1FE94175006ACFC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207681DF1FE94175006ACFC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		207681D91FE94175006ACFC3 /* Skillsgen */ = {
 			isa = PBXGroup;
 			children = (
+				206A3A471FEC325D00BDFE96 /* Config.swift */,
 				207681F81FE9433F006ACFC3 /* Types */,
 				207681F21FE94209006ACFC3 /* Helpers.swift */,
 				207681F61FE94286006ACFC3 /* BackendController.swift */,
@@ -180,6 +183,7 @@
 				207681ED1FE94190006ACFC3 /* Booking.swift in Sources */,
 				207797B31FEBDD7A001CE80A /* LineItemTableViewCell.swift in Sources */,
 				207681EF1FE941C2006ACFC3 /* Order.swift in Sources */,
+				206A3A481FEC325D00BDFE96 /* Config.swift in Sources */,
 				205F53BB1FE978CE0054FCBC /* BookingsViewController.swift in Sources */,
 				207681F71FE94286006ACFC3 /* BackendController.swift in Sources */,
 				207681DB1FE94175006ACFC3 /* AppDelegate.swift in Sources */,
