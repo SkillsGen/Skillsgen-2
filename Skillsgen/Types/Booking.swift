@@ -17,7 +17,6 @@ struct Booking: Codable {
     var trainer: String
     var `private`: Bool
     var cancelled: Bool
-    var delcount: Int
     var location: String
     var bookcode: String
     var delcode: String
@@ -26,6 +25,16 @@ struct Booking: Codable {
     var customer: String?
     var delegates: [Delegate]?
     var orders: [Order]?
+    
+    var delCount: Int {
+        var count: Int?
+        if let delegates = self.delegates {
+            count = delegates.count
+        } else {
+            count = 0
+        }
+        return count!
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -36,7 +45,6 @@ struct Booking: Codable {
         case `private`
         case cancelled
         case duration
-        case delcount
         case location
         case bookcode
         case delcode
@@ -58,12 +66,7 @@ struct Booking: Codable {
         self.delcode = try valueContainer.decode(String.self, forKey: CodingKeys.delcode)
         self.notes = try? valueContainer.decode(String.self, forKey: CodingKeys.notes)
         self.customer = try? valueContainer.decode(String.self, forKey: CodingKeys.customer)
-        if let delegates = try? valueContainer.decode([Delegate].self, forKey: CodingKeys.delegates) {
-            self.delegates = delegates
-            self.delcount = delegates.count
-        } else {
-            self.delcount = 0
-        }
+        self.delegates = try? valueContainer.decode([Delegate].self, forKey: CodingKeys.delegates)
         self.orders = try? valueContainer.decode([Order].self, forKey: CodingKeys.orders)
         
         //

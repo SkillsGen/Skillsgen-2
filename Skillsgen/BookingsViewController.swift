@@ -84,7 +84,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.dayOfMonthLabel?.text = cell.cellDateFormatter.string(from: booking.date)
         cell.courseLabel?.text = booking.course
         cell.trainerLabel?.text = booking.trainer
-        cell.noOfDelegatesLabel?.text = String(booking.delcount)
+        cell.noOfDelegatesLabel?.text = String(booking.delCount)
         
         if let customer = booking.customer {
             cell.customerLabel?.text = customer

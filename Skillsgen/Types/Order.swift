@@ -19,10 +19,29 @@ struct Order: Codable {
     var confirmed: Bool
     var invoiced: Bool
     var cancelled: Bool
-    var total: Double
-    var totalWithVat: Double
-    
     var lineItems: [LineItem]?
+    
+    var total: Double {
+        var runningTotal: Double = 0
+        if let lineItems = self.lineItems {
+            for i in lineItems {
+                runningTotal += i.net
+            }
+        }
+        return runningTotal
+    }
+    
+    var totalWithVat: Double {
+        var runningTotalWithVat: Double = 0
+        if let lineItems = self.lineItems {
+            for i in lineItems {
+                if i.vat {
+                    runningTotalWithVat += i.net * 1.2
+                }
+            }
+        }
+        return runningTotalWithVat
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -36,8 +55,6 @@ struct Order: Codable {
         case invoiced
         case cancelled
         case lineItems = "lineitems"
-        case total
-        case totalWithVat
     }
     
     //
@@ -51,19 +68,7 @@ struct Order: Codable {
         self.customer = try valueContainer.decode(String.self, forKey: CodingKeys.customer)
         self.address = try valueContainer.decode(String.self, forKey: CodingKeys.address)
         self.notes = try? valueContainer.decode(String.self, forKey: CodingKeys.notes)
-        
-        if let lineItems = try? valueContainer.decode([LineItem].self, forKey: CodingKeys.lineItems) {
-            self.lineItems = lineItems
-            self.total = 0
-            for i in lineItems {
-                self.total += i.net
-            }
-            self.totalWithVat = self.total * 1.2
-        } else {
-            self.total = 0
-            self.totalWithVat = 0
-        }
-        
+        self.lineItems = try? valueContainer.decode([LineItem].self, forKey: CodingKeys.lineItems)
         
         let sentInt = try valueContainer.decode(Int.self, forKey: CodingKeys.sent)
         self.sent = intToBool(sentInt)

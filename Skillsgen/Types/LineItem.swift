@@ -14,9 +14,21 @@ struct LineItem: Codable {
     var description: String
     var unitPrice: Double
     var quantity: Int
-    var net: Double
     var vat: Bool
-    var total: Double
+    
+    var net: Double {
+        return self.unitPrice * Double(self.quantity)
+    }
+    
+    var total: Double {
+        var total: Double?
+        if self.vat {
+            total = self.net * 1.2
+        } else {
+            total = self.net
+        }
+        return total!
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -24,9 +36,7 @@ struct LineItem: Codable {
         case description
         case unitPrice = "unitprice"
         case quantity
-        case net
         case vat
-        case total
     }
     
     init(from decoder: Decoder) throws {
@@ -39,16 +49,7 @@ struct LineItem: Codable {
         let unitPriceString = try valueContainer.decode(String.self, forKey: CodingKeys.unitPrice)
         self.unitPrice = Double(unitPriceString)!
         
-        self.net = self.unitPrice * Double(self.quantity)
-        
         let vatInt = try valueContainer.decode(Int.self, forKey: CodingKeys.vat)
         self.vat = intToBool(vatInt)
-        
-        if self.vat == true {
-            self.total = self.net * 1.2
-        } else {
-            self.total = self.net
-        }
-        
     }
 }
