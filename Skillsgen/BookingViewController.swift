@@ -21,6 +21,8 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var publicPrivateLabel: UILabel!
     @IBOutlet weak var delCodeLabel: UILabel!
     @IBOutlet weak var bookCodeLabel: UILabel!
+    @IBOutlet weak var trainerLabel: UILabel!
+    @IBOutlet weak var trainerEmailSentLabel: UILabel!
     
     @IBOutlet weak var ordersTableView: UITableView!
     @IBOutlet weak var delegateTableView: UITableView!
@@ -79,6 +81,10 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return title!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     
     
     override func viewDidLoad() {
@@ -86,13 +92,14 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         dateFormatter.dateFormat = "YYYY-MM-dd"
         
-        bookingIdLabel.text = "BookingID: " + String(booking!.id)
+        bookingIdLabel.text = "ID: " + String(booking!.id)
         dateLabel.text = dateFormatter.string(from: booking!.date)
         startTimeLabel.text = booking!.start
         locationLabel.text = "Location: " + booking!.location
         courseLabel.text = booking!.course
         delCodeLabel.text = "Delegate: " + booking!.delcode
         bookCodeLabel.text = "Booker: " + booking!.bookcode
+        trainerLabel.text = booking!.trainer
         
         if booking!.private {
             publicPrivateLabel.text = booking?.customer!
@@ -100,6 +107,11 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
             publicPrivateLabel.text = "Public"
         }
         
+        if booking!.trainerEmailSent {
+            trainerEmailSentLabel.text = "Trainer email sent ✔︎"
+        } else {
+            trainerEmailSentLabel.text = "Trainer email not sent yet"
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -119,6 +131,7 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
             let destination = segue.destination as! OrderViewController
             let selectedIndexPath = ordersTableView.indexPathForSelectedRow!
             destination.order = booking!.orders![selectedIndexPath.row]
+            destination.booking = booking!
         }
     }
     
