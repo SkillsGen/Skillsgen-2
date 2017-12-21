@@ -20,6 +20,7 @@ struct Order: Codable {
     var invoiced: Bool
     var cancelled: Bool
     var lineItems: [LineItem]?
+    var poNumber: String
     
     var total: Double {
         var runningTotal: Double = 0
@@ -55,6 +56,7 @@ struct Order: Codable {
         case invoiced
         case cancelled
         case lineItems = "lineitems"
+        case poNumber = "ponumber"
     }
     
     //
@@ -67,6 +69,7 @@ struct Order: Codable {
         self.contact = try valueContainer.decode(String.self, forKey: CodingKeys.contact)
         self.customer = try valueContainer.decode(String.self, forKey: CodingKeys.customer)
         self.address = try valueContainer.decode(String.self, forKey: CodingKeys.address)
+        self.poNumber = try valueContainer.decode(String.self, forKey: CodingKeys.poNumber)
         self.notes = try? valueContainer.decode(String.self, forKey: CodingKeys.notes)
         self.lineItems = try? valueContainer.decode([LineItem].self, forKey: CodingKeys.lineItems)
         
