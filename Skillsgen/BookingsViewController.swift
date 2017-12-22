@@ -12,6 +12,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var loadingView: UIView!
     
     
     let backendController = BackendController()
@@ -44,6 +45,9 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadingView.backgroundColor = UIColor(displayP3Red: 0.27, green: 0.27, blue: 0.27, alpha: 0.7)
+        loadingView.layer.cornerRadius = 10
+        
         dateLabel.text = createDateLabelString(month: month, year: year)
         updateUI()
     }
@@ -51,6 +55,8 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func updateUI() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        tableView.isHidden = true
+        loadingView.isHidden = false
         backendController.fetchBookings(month: month, year: year) { (bookings) in
             if let bookings = bookings {
                 DispatchQueue.main.async {
@@ -58,6 +64,8 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
                     self.tableView.reloadData()
                     self.dateLabel.text = createDateLabelString(month: self.month, year: self.year)
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self.tableView.isHidden = false
+                    self.loadingView.isHidden = true
                 }
                 
             }

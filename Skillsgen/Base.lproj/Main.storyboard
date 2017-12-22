@@ -18,6 +18,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAa-Ud-AOy" userLabel="LoadingView">
+                                <rect key="frame" x="72" y="298" width="270" height="140"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Bookings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V3-tk-nR9">
+                                        <rect key="frame" x="8" y="16" width="254" height="27.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="N8p-jn-3hS">
+                                        <rect key="frame" x="115.66666666666666" y="73.666666666666686" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="ev9-Ri-xvi"/>
+                                            <constraint firstAttribute="height" constant="40" id="uLr-D8-qh3"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7V3-tk-nR9" firstAttribute="top" secondItem="tAa-Ud-AOy" secondAttribute="top" constant="16" id="45j-wO-NEF"/>
+                                    <constraint firstItem="N8p-jn-3hS" firstAttribute="centerX" secondItem="tAa-Ud-AOy" secondAttribute="centerX" id="Fhn-x2-xFv"/>
+                                    <constraint firstItem="7V3-tk-nR9" firstAttribute="leading" secondItem="tAa-Ud-AOy" secondAttribute="leading" constant="8" id="Pah-Gj-3g9"/>
+                                    <constraint firstAttribute="height" constant="140" id="XTa-Wr-oug"/>
+                                    <constraint firstItem="N8p-jn-3hS" firstAttribute="top" secondItem="7V3-tk-nR9" secondAttribute="bottom" constant="30" id="Yvq-wc-NR3"/>
+                                    <constraint firstAttribute="width" constant="270" id="mtV-Ym-aAR"/>
+                                    <constraint firstAttribute="trailing" secondItem="7V3-tk-nR9" secondAttribute="trailing" constant="8" id="pvu-hb-9Hj"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="aCZ-cC-83k">
                                 <rect key="frame" x="0.0" y="64" width="414" height="45"/>
                                 <subviews>
@@ -154,13 +182,16 @@
                             <constraint firstItem="0Lq-PH-252" firstAttribute="leading" secondItem="1F9-wR-4xG" secondAttribute="leading" id="jti-hv-Izn"/>
                             <constraint firstItem="aCZ-cC-83k" firstAttribute="leading" secondItem="i29-Sw-32e" secondAttribute="leading" id="k4o-CK-oAd"/>
                             <constraint firstItem="0Lq-PH-252" firstAttribute="top" secondItem="aCZ-cC-83k" secondAttribute="bottom" id="kcM-BJ-J7w"/>
+                            <constraint firstItem="tAa-Ud-AOy" firstAttribute="centerY" secondItem="i29-Sw-32e" secondAttribute="centerY" id="lIv-Hw-BBn"/>
                             <constraint firstItem="1F9-wR-4xG" firstAttribute="trailing" secondItem="0Lq-PH-252" secondAttribute="trailing" id="nOm-vs-kf6"/>
+                            <constraint firstItem="tAa-Ud-AOy" firstAttribute="centerX" secondItem="i29-Sw-32e" secondAttribute="centerX" id="q2l-qA-2Wg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1F9-wR-4xG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Bookings" id="Jqc-xX-gvK"/>
                     <connections>
                         <outlet property="dateLabel" destination="dAl-dv-VYb" id="oOW-He-3LB"/>
+                        <outlet property="loadingView" destination="tAa-Ud-AOy" id="PYg-Vc-LUS"/>
                         <outlet property="tableView" destination="0Lq-PH-252" id="Bv3-5T-fdN"/>
                     </connections>
                 </viewController>
