@@ -22,13 +22,13 @@
                                 <rect key="frame" x="72" y="298" width="270" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Bookings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V3-tk-nR9">
-                                        <rect key="frame" x="8" y="16" width="254" height="27.666666666666671"/>
+                                        <rect key="frame" x="8" y="30" width="254" height="27.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="N8p-jn-3hS">
-                                        <rect key="frame" x="115.66666666666666" y="73.666666666666686" width="40" height="40"/>
+                                        <rect key="frame" x="115.66666666666666" y="77.666666666666686" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="ev9-Ri-xvi"/>
                                             <constraint firstAttribute="height" constant="40" id="uLr-D8-qh3"/>
@@ -37,11 +37,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="7V3-tk-nR9" firstAttribute="top" secondItem="tAa-Ud-AOy" secondAttribute="top" constant="16" id="45j-wO-NEF"/>
+                                    <constraint firstItem="7V3-tk-nR9" firstAttribute="top" secondItem="tAa-Ud-AOy" secondAttribute="top" constant="30" id="45j-wO-NEF"/>
                                     <constraint firstItem="N8p-jn-3hS" firstAttribute="centerX" secondItem="tAa-Ud-AOy" secondAttribute="centerX" id="Fhn-x2-xFv"/>
                                     <constraint firstItem="7V3-tk-nR9" firstAttribute="leading" secondItem="tAa-Ud-AOy" secondAttribute="leading" constant="8" id="Pah-Gj-3g9"/>
                                     <constraint firstAttribute="height" constant="140" id="XTa-Wr-oug"/>
-                                    <constraint firstItem="N8p-jn-3hS" firstAttribute="top" secondItem="7V3-tk-nR9" secondAttribute="bottom" constant="30" id="Yvq-wc-NR3"/>
+                                    <constraint firstItem="N8p-jn-3hS" firstAttribute="top" secondItem="7V3-tk-nR9" secondAttribute="bottom" constant="20" id="Yvq-wc-NR3"/>
                                     <constraint firstAttribute="width" constant="270" id="mtV-Ym-aAR"/>
                                     <constraint firstAttribute="trailing" secondItem="7V3-tk-nR9" secondAttribute="trailing" constant="8" id="pvu-hb-9Hj"/>
                                 </constraints>
