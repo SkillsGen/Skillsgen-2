@@ -13,6 +13,9 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingDescription: UILabel!
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var retryButton: UIButton!
     
     
     let backendController = BackendController()
@@ -45,6 +48,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        retryButton.isHidden = true
         loadingView.backgroundColor = UIColor(displayP3Red: 0.27, green: 0.27, blue: 0.27, alpha: 0.7)
         loadingView.layer.cornerRadius = 10
         
@@ -68,9 +72,21 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
                     self.loadingView.isHidden = true
                 }
                 
+            } else {
+                self.loadingDescription.text = "Something went wrong"
+                self.loadingActivityIndicator.isHidden = true
+                self.retryButton.isHidden = false
             }
         }
     }
+    
+    @IBAction func retryButtonTapped(_ sender: Any) {
+        retryButton.isHidden = true
+        updateUI()
+        
+    }
+    
+    
     
     
     override func didReceiveMemoryWarning() {

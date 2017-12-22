@@ -27,6 +27,13 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cph-jc-Cj8">
+                                        <rect key="frame" x="112" y="55" width="46" height="30"/>
+                                        <state key="normal" title="Retry"/>
+                                        <connections>
+                                            <action selector="retryButtonTapped:" destination="4Qn-gi-D8W" eventType="touchUpInside" id="mdm-Pn-VwL"/>
+                                        </connections>
+                                    </button>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="N8p-jn-3hS">
                                         <rect key="frame" x="115.66666666666666" y="77.666666666666686" width="40" height="40"/>
                                         <constraints>
@@ -37,6 +44,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="cph-jc-Cj8" firstAttribute="centerX" secondItem="N8p-jn-3hS" secondAttribute="centerX" id="265-eG-2iV"/>
+                                    <constraint firstItem="cph-jc-Cj8" firstAttribute="centerY" secondItem="N8p-jn-3hS" secondAttribute="centerY" id="3nS-rE-iZe"/>
                                     <constraint firstItem="7V3-tk-nR9" firstAttribute="top" secondItem="tAa-Ud-AOy" secondAttribute="top" constant="30" id="45j-wO-NEF"/>
                                     <constraint firstItem="N8p-jn-3hS" firstAttribute="centerX" secondItem="tAa-Ud-AOy" secondAttribute="centerX" id="Fhn-x2-xFv"/>
                                     <constraint firstItem="7V3-tk-nR9" firstAttribute="leading" secondItem="tAa-Ud-AOy" secondAttribute="leading" constant="8" id="Pah-Gj-3g9"/>
@@ -191,7 +200,10 @@
                     <navigationItem key="navigationItem" title="Bookings" id="Jqc-xX-gvK"/>
                     <connections>
                         <outlet property="dateLabel" destination="dAl-dv-VYb" id="oOW-He-3LB"/>
+                        <outlet property="loadingActivityIndicator" destination="N8p-jn-3hS" id="IvP-rm-TjE"/>
+                        <outlet property="loadingDescription" destination="7V3-tk-nR9" id="1oH-to-jek"/>
                         <outlet property="loadingView" destination="tAa-Ud-AOy" id="PYg-Vc-LUS"/>
+                        <outlet property="retryButton" destination="cph-jc-Cj8" id="ymP-N7-SjQ"/>
                         <outlet property="tableView" destination="0Lq-PH-252" id="Bv3-5T-fdN"/>
                     </connections>
                 </viewController>
