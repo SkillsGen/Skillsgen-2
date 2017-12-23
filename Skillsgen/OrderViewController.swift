@@ -56,6 +56,10 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var orderInvoicedLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     
+    @IBOutlet weak var totalPlusVatLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,6 +71,8 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         customerLabel.text = order?.customer
         courseLabel.text = booking?.course
         dateLabel.text = dateFormatter.string(from: booking!.date)
+        totalPlusVatLabel.text = "Total+VAT: £" + String(order!.total)
+        totalLabel.text = "Total: £" + String(order!.totalWithVat)
         notesLabel.text = order?.notes ?? ""
         
         if order!.sent {

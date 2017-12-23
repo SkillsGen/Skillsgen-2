@@ -12,6 +12,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
+    
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingDescription: UILabel!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
@@ -42,6 +43,13 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
             year += 1
         }
         updateUI()
+    }
+    
+    
+    @IBAction func retryButtonTapped(_ sender: Any) {
+        retryButton.isHidden = true
+        updateUI()
+        
     }
     
     
@@ -79,15 +87,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
-    
-    @IBAction func retryButtonTapped(_ sender: Any) {
-        retryButton.isHidden = true
-        updateUI()
-        
-    }
-    
-    
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
