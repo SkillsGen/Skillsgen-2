@@ -76,15 +76,15 @@
 		207681D91FE94175006ACFC3 /* Skillsgen */ = {
 			isa = PBXGroup;
 			children = (
+				207681DA1FE94175006ACFC3 /* AppDelegate.swift */,
 				206A3A471FEC325D00BDFE96 /* Config.swift */,
 				207681F81FE9433F006ACFC3 /* Types */,
 				207681F21FE94209006ACFC3 /* Helpers.swift */,
 				207681F61FE94286006ACFC3 /* BackendController.swift */,
-				207681DA1FE94175006ACFC3 /* AppDelegate.swift */,
 				207681DE1FE94175006ACFC3 /* Main.storyboard */,
 				205F53BA1FE978CE0054FCBC /* BookingsViewController.swift */,
-				201DB5551FEA6A170080C845 /* BookingTableViewCell.swift */,
 				201DB5571FEA74B40080C845 /* BookingViewController.swift */,
+				201DB5551FEA6A170080C845 /* BookingTableViewCell.swift */,
 				207797B01FEBC973001CE80A /* OrderViewController.swift */,
 				207797B21FEBDD7A001CE80A /* LineItemTableViewCell.swift */,
 				207681E11FE94175006ACFC3 /* Assets.xcassets */,
