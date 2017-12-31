@@ -18,7 +18,7 @@ func intToBool(_ int:Int) -> Bool {
 
 func getCurrentMonthAndYear() -> (month: Int, year: Int) {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMYYYY"
+    dateFormatter.dateFormat = "MMyyyy"
     let date = Date()
     let dateString = dateFormatter.string(from: date)
     let seperatorIndex = dateString.index(dateString.startIndex, offsetBy: 2)
