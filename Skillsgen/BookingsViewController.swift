@@ -46,6 +46,8 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
+    
+    
     @IBAction func retryButtonTapped(_ sender: Any) {
         retryButton.isHidden = true
         updateUI()
@@ -56,6 +58,14 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+        
         retryButton.isHidden = true
         loadingView.backgroundColor = UIColor(displayP3Red: 0.27, green: 0.27, blue: 0.27, alpha: 0.7)
         loadingView.layer.cornerRadius = 10
@@ -64,6 +74,28 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         updateUI()
     }
 
+    @objc func swipe(_ gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            if swipeGesture.direction == UISwipeGestureRecognizerDirection.right {
+                if month < 12 {
+                    month += 1
+                } else {
+                    month = 1
+                    year += 1
+                }
+                updateUI()
+            } else if swipeGesture.direction == UISwipeGestureRecognizerDirection.left {
+                if self.month > 1 {
+                    self.month -= 1
+                } else {
+                    self.month = 12
+                    self.year -= 1
+                }
+                self.updateUI()
+            }
+        }
+    }
+    
     
     func updateUI() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
