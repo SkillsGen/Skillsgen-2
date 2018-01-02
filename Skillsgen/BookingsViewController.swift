@@ -76,7 +76,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     @objc func swipe(_ gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            if swipeGesture.direction == UISwipeGestureRecognizerDirection.right {
+            if swipeGesture.direction == UISwipeGestureRecognizerDirection.left {
                 if month < 12 {
                     month += 1
                 } else {
@@ -84,7 +84,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
                     year += 1
                 }
                 updateUI()
-            } else if swipeGesture.direction == UISwipeGestureRecognizerDirection.left {
+            } else if swipeGesture.direction == UISwipeGestureRecognizerDirection.right {
                 if self.month > 1 {
                     self.month -= 1
                 } else {
