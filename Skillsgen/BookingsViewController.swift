@@ -46,11 +46,10 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    
-    
     @IBAction func retryButtonTapped(_ sender: Any) {
         retryButton.isHidden = true
-        updateUI()
+        loadingActivityIndicator.isHidden = false
+        updateUI("Retrying...")
         
     }
     
@@ -97,10 +96,18 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    func updateUI() {
+    func updateUI(_ loadingMessage: String? = nil) {
+        if let loadingMessage = loadingMessage {
+            self.loadingDescription.text = loadingMessage
+        } else {
+            self.loadingDescription.text = "Loading Bookings"
+        }
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         tableView.isHidden = true
         loadingView.isHidden = false
+        
+        loadingActivityIndicator.isHidden = false
         backendController.fetchBookings(month: month, year: year) { (bookings) in
             if let bookings = bookings {
                 DispatchQueue.main.async {
@@ -113,9 +120,13 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
                 }
                 
             } else {
-                self.loadingDescription.text = "Something went wrong"
-                self.loadingActivityIndicator.isHidden = true
-                self.retryButton.isHidden = false
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self.loadingDescription.text = "Something went wrong"
+                    self.loadingActivityIndicator.isHidden = true
+                    self.retryButton.layer.cornerRadius = 4
+                    self.retryButton.isHidden = false
+                }
             }
         }
     }
