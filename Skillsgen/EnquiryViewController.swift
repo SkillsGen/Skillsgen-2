@@ -14,8 +14,8 @@ class EnquiryViewController: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UITextView!
+    @IBOutlet weak var emailLabel: UITextView!    
     @IBOutlet weak var enqLabel: UILabel!
     
     override func viewDidLoad() {

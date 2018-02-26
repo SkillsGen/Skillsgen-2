@@ -78,20 +78,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lF-mF-xNT">
-                                <rect key="frame" x="8" y="157" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4f-Gv-SMK">
-                                <rect key="frame" x="8" y="194" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="01511111111" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m2f-UD-whD">
+                                <rect key="frame" x="8" y="157" width="398" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="tel"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="test@test.com" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-sO-OaY">
+                                <rect key="frame" x="8" y="206" width="398" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="email"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RyE-Jh-Gns">
-                                <rect key="frame" x="0.0" y="239" width="414" height="448"/>
+                                <rect key="frame" x="0.0" y="263" width="414" height="424"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiH-tI-0iy">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="21"/>
@@ -110,28 +112,30 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="RyE-Jh-Gns" firstAttribute="top" secondItem="ux6-sO-OaY" secondAttribute="bottom" constant="24" id="2WK-l8-lko"/>
                             <constraint firstItem="RyE-Jh-Gns" firstAttribute="leading" secondItem="wJ1-4G-C23" secondAttribute="leading" id="3Yp-YI-5xP"/>
+                            <constraint firstItem="ux6-sO-OaY" firstAttribute="top" secondItem="m2f-UD-whD" secondAttribute="bottom" constant="16" id="8wn-aq-VsG"/>
                             <constraint firstItem="JiH-tI-0iy" firstAttribute="width" secondItem="GrH-8b-b87" secondAttribute="width" id="Fe2-4T-eLO"/>
+                            <constraint firstItem="m2f-UD-whD" firstAttribute="top" secondItem="4hB-Tq-KI2" secondAttribute="bottom" constant="16" id="Fn8-Cp-cRC"/>
+                            <constraint firstItem="wJ1-4G-C23" firstAttribute="trailing" secondItem="m2f-UD-whD" secondAttribute="trailing" constant="8" id="HKZ-a8-U3a"/>
+                            <constraint firstItem="ux6-sO-OaY" firstAttribute="leading" secondItem="wJ1-4G-C23" secondAttribute="leading" constant="8" id="J2k-0t-tSN"/>
                             <constraint firstItem="wJ1-4G-C23" firstAttribute="bottom" secondItem="RyE-Jh-Gns" secondAttribute="bottom" id="LQ5-gF-V5b"/>
-                            <constraint firstItem="c4f-Gv-SMK" firstAttribute="leading" secondItem="wJ1-4G-C23" secondAttribute="leading" constant="8" id="Npa-Cw-ST6"/>
                             <constraint firstItem="djs-rw-4fj" firstAttribute="leading" secondItem="wJ1-4G-C23" secondAttribute="leading" constant="8" id="O92-t1-CRh"/>
-                            <constraint firstItem="9lF-mF-xNT" firstAttribute="top" secondItem="4hB-Tq-KI2" secondAttribute="bottom" constant="16" id="OUY-Lb-Qlz"/>
                             <constraint firstItem="djs-rw-4fj" firstAttribute="top" secondItem="wJ1-4G-C23" secondAttribute="top" constant="8" id="Uo7-rd-YZb"/>
                             <constraint firstItem="wJ1-4G-C23" firstAttribute="trailing" secondItem="RyE-Jh-Gns" secondAttribute="trailing" id="a73-47-Wrj"/>
-                            <constraint firstItem="9lF-mF-xNT" firstAttribute="leading" secondItem="wJ1-4G-C23" secondAttribute="leading" constant="8" id="fJf-ca-dp5"/>
-                            <constraint firstItem="c4f-Gv-SMK" firstAttribute="top" secondItem="9lF-mF-xNT" secondAttribute="bottom" constant="16" id="mAy-uZ-7UW"/>
-                            <constraint firstItem="RyE-Jh-Gns" firstAttribute="top" secondItem="c4f-Gv-SMK" secondAttribute="bottom" constant="24" id="mdH-Yf-aPc"/>
+                            <constraint firstItem="m2f-UD-whD" firstAttribute="leading" secondItem="wJ1-4G-C23" secondAttribute="leading" constant="8" id="k9H-yr-Ie9"/>
                             <constraint firstItem="4hB-Tq-KI2" firstAttribute="leading" secondItem="wJ1-4G-C23" secondAttribute="leading" constant="8" id="pmn-2i-sKv"/>
                             <constraint firstItem="4hB-Tq-KI2" firstAttribute="top" secondItem="djs-rw-4fj" secondAttribute="bottom" constant="24" id="x0f-Gm-95Z"/>
+                            <constraint firstItem="wJ1-4G-C23" firstAttribute="trailing" secondItem="ux6-sO-OaY" secondAttribute="trailing" constant="8" id="xuv-hD-2FP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wJ1-4G-C23"/>
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="djs-rw-4fj" id="yNs-c9-b05"/>
-                        <outlet property="emailLabel" destination="c4f-Gv-SMK" id="74m-GM-Q1d"/>
+                        <outlet property="emailLabel" destination="ux6-sO-OaY" id="V0c-aC-QYg"/>
                         <outlet property="enqLabel" destination="JiH-tI-0iy" id="VX1-fG-qK2"/>
                         <outlet property="nameLabel" destination="4hB-Tq-KI2" id="Clf-cv-wwE"/>
-                        <outlet property="phoneLabel" destination="9lF-mF-xNT" id="e1W-mf-yGT"/>
+                        <outlet property="phoneLabel" destination="m2f-UD-whD" id="Y0y-Oz-0O8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hax-qa-7hL" userLabel="First Responder" sceneMemberID="firstResponder"/>
