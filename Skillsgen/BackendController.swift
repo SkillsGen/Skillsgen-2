@@ -47,7 +47,10 @@ class BackendController {
     func fetchEnquiries(completion: @escaping ([Enquiry]?) -> Void) {
         
         var components = URLComponents(url: Config.baseURL, resolvingAgainstBaseURL: true)!
-        components.queryItems = [URLQueryItem(name: "query", value: "enquiries")]
+        components.queryItems = [
+            URLQueryItem(name: "query", value: "enquiries"),
+            URLQueryItem(name: Config.authQuery, value: Config.authValue)
+        ]
         let url = components.url!
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
