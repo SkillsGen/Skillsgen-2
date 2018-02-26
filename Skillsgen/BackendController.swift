@@ -43,4 +43,23 @@ class BackendController {
         }
         task.resume()
     }
+    
+    func fetchEnquiries(completion: @escaping ([Enquiry]?) -> Void) {
+        
+        var components = URLComponents(url: Config.baseURL, resolvingAgainstBaseURL: true)!
+        components.queryItems = [URLQueryItem(name: "query", value: "enquiries")]
+        let url = components.url!
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data,
+                let enquiries = try? jsonDecoder.decode([Enquiry].self, from: data)
+            {
+                completion(enquiries)
+            } else {
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
 }

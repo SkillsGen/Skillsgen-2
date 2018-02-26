@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 func intToBool(_ int:Int) -> Bool {
     if int == 1 {
@@ -36,4 +37,16 @@ func createDateLabelString(month: Int, year: Int) -> String{
     let monthString = dateFormatter.string(from: date)
     
     return "< " + monthString + " - " + String(year) + " >"
+}
+
+extension UITabBar {
+    override open func sizeThatFits(_ size: CGSize) -> CGSize {
+        super.sizeThatFits(size)
+        guard let window = UIApplication.shared.keyWindow else {
+            return super.sizeThatFits(size)
+        }
+        var sizeThatFits = super.sizeThatFits(size)
+        sizeThatFits.height = window.safeAreaInsets.bottom + 30
+        return sizeThatFits
+    }
 }
