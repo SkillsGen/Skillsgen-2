@@ -11,9 +11,19 @@ import UIKit
 class EnquiriesViewController: UITableViewController {
     var enquiries: [Enquiry] = []
     let backendController = BackendController()
+    let errorLoadingView = UIView()
+    let errorLoadingMessage = UILabel()
+    let errorRetryButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpErrorView()
+        
+        updateUI()
+    }
+    
+    @objc func retryButtonTapped(_ sender: UIButton) {
         updateUI()
     }
     
@@ -24,11 +34,21 @@ class EnquiriesViewController: UITableViewController {
     
     
     func updateUI() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         backendController.fetchEnquiries() { (enquiries) in
             if let enquiries = enquiries {
                 DispatchQueue.main.async {
                     self.enquiries = enquiries
                     self.tableView.reloadData()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self.errorLoadingView.isHidden = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.enquiries = []
+                    self.tableView.reloadData()
+                    self.errorLoadingView.isHidden = false
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
             }
         }
@@ -61,6 +81,32 @@ class EnquiriesViewController: UITableViewController {
             let index = tableView.indexPathForSelectedRow!.row
             enquiryViewController.enquiry = enquiries[index]
         }
+    }
+    
+    func setUpErrorView() {
+        errorLoadingView.isHidden = true
+        errorLoadingView.frame = CGRect(x: super.view.frame.width / 2 - 135, y: super.view.frame.width / 2, width: 270, height: 140)
+        errorLoadingView.backgroundColor = UIColor(displayP3Red: 0.27, green: 0.27, blue: 0.27, alpha: 0.7)
+        errorLoadingView.layer.cornerRadius = 10
+        
+        errorLoadingMessage.text = "Couldn't Load Enquiries"
+        errorLoadingMessage.font = UIFont.systemFont(ofSize: 23.0)
+        errorLoadingMessage.textColor = .white
+        errorLoadingMessage.textAlignment = .center
+        errorLoadingMessage.frame = CGRect(x: 10, y: 30, width: 250, height: 30)
+        errorLoadingView.addSubview(errorLoadingMessage)
+        
+        errorRetryButton.setTitle("Retry", for: .normal)
+        errorRetryButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        errorRetryButton.layer.cornerRadius = 4
+        errorRetryButton.backgroundColor = .blue
+        errorRetryButton.titleLabel!.textColor = .white
+        errorRetryButton.frame = CGRect(x: 95, y: 80, width: 80, height: 35)
+        errorRetryButton.layer.opacity = 0.8
+        errorRetryButton.addTarget(self, action: #selector(self.retryButtonTapped(_:)), for: .touchUpInside)
+        errorLoadingView.addSubview(errorRetryButton)
+        
+        super.view.addSubview(errorLoadingView)
     }
 }
 

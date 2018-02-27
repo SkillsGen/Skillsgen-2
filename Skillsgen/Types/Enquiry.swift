@@ -15,4 +15,10 @@ struct Enquiry: Codable {
     let phone: String?
     let enquiry: String
     let timestamp: String
+    
+    var date: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY - HH:mm"
+        return dateFormatter.date(from: self.timestamp)!
+    }
 }
