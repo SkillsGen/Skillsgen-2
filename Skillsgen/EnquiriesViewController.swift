@@ -17,6 +17,12 @@ class EnquiriesViewController: UITableViewController {
         updateUI()
     }
     
+    
+    @IBAction func refreshButtonTapped(_ sender: Any) {
+        updateUI()
+    }
+    
+    
     func updateUI() {
         backendController.fetchEnquiries() { (enquiries) in
             if let enquiries = enquiries {
@@ -28,9 +34,17 @@ class EnquiriesViewController: UITableViewController {
         }
     }
     
+    
+    func updateBadgeNumber() {
+        let badgeValue = "5"
+        navigationController?.tabBarItem.badgeValue = badgeValue
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return enquiries.count
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EnquiryCell", for: indexPath)
@@ -39,6 +53,7 @@ class EnquiriesViewController: UITableViewController {
         cell.detailTextLabel?.text = enquiry.timestamp
         return cell
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EnquirySegue" {

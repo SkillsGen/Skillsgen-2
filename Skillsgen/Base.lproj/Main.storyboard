@@ -52,7 +52,13 @@
                             <outlet property="delegate" destination="Nga-WD-sEg" id="6Xw-rZ-HlG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Web Enquiries" id="IsW-hK-CMA"/>
+                    <navigationItem key="navigationItem" title="Web Enquiries" id="IsW-hK-CMA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="QVv-ng-ugA">
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="Nga-WD-sEg" id="lxv-gH-eat"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBI-AA-q7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -848,6 +854,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="MNv-y4-xTS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LoL-aS-IWe">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
