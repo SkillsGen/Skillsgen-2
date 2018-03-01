@@ -27,6 +27,7 @@ class EnquiryViewController: UIViewController {
         }
         emailLabel.text = enquiry.email
         enqLabel.text = enquiry.enquiry
+        BackendController.shared.updateEnquiry(enquiry: enquiry)
     }
 
     override func didReceiveMemoryWarning() {

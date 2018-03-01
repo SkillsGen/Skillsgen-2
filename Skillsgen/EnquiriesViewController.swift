@@ -10,14 +10,12 @@ import UIKit
 
 class EnquiriesViewController: UITableViewController {
     var enquiries: [Enquiry] = []
-    let backendController = BackendController()
     let errorLoadingView = UIView()
     let errorLoadingMessage = UILabel()
     let errorRetryButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpErrorView()
         
         updateUI()
@@ -35,13 +33,14 @@ class EnquiriesViewController: UITableViewController {
     
     func updateUI() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        backendController.fetchEnquiries() { (enquiries) in
+        BackendController.shared.fetchEnquiries() { (enquiries) in
             if let enquiries = enquiries {
                 DispatchQueue.main.async {
                     self.enquiries = enquiries
                     self.tableView.reloadData()
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self.errorLoadingView.isHidden = true
+                    self.updateBadgeNumber()
                 }
             } else {
                 DispatchQueue.main.async {
@@ -56,8 +55,13 @@ class EnquiriesViewController: UITableViewController {
     
     
     func updateBadgeNumber() {
-        let badgeValue = "5"
-        navigationController?.tabBarItem.badgeValue = badgeValue
+        var newCount: Int = 0
+        for enquiry in self.enquiries {
+            if enquiry.viewed == false {
+                newCount += 1
+            }
+        }
+        tabBarController?.tabBar.items?[1].badgeValue = String(newCount)
     }
     
     
@@ -71,6 +75,11 @@ class EnquiriesViewController: UITableViewController {
         let enquiry = enquiries[indexPath.row]
         cell.textLabel?.text = enquiry.name
         cell.detailTextLabel?.text = enquiry.timestamp
+        if enquiry.viewed == false {
+            cell.backgroundColor = .red
+        } else {
+            cell.backgroundColor = .white
+        }
         return cell
     }
     
@@ -79,8 +88,11 @@ class EnquiriesViewController: UITableViewController {
         if segue.identifier == "EnquirySegue" {
             let enquiryViewController = segue.destination as! EnquiryViewController
             let index = tableView.indexPathForSelectedRow!.row
+            self.enquiries[index].viewed = true
             enquiryViewController.enquiry = enquiries[index]
         }
+        self.updateBadgeNumber()
+        self.tableView.reloadData()
     }
     
     func setUpErrorView() {

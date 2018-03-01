@@ -15,10 +15,39 @@ struct Enquiry: Codable {
     let phone: String?
     let enquiry: String
     let timestamp: String
+    var viewed: Bool
+    var date: Date
     
-    var date: Date {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case email
+        case phone
+        case enquiry
+        case timestamp
+        case viewed
+        case date
+    }
+    
+    init(from decoder: Decoder) throws {
+        let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try valueContainer.decode(Int.self, forKey: CodingKeys.id)
+        self.name = try valueContainer.decode(String.self, forKey: CodingKeys.name)
+        self.email = try valueContainer.decode(String.self, forKey: CodingKeys.email)
+        self.phone = try? valueContainer.decode(String.self, forKey: CodingKeys.phone)
+        self.enquiry = try valueContainer.decode(String.self, forKey: CodingKeys.enquiry)
+        self.timestamp = try valueContainer.decode(String.self, forKey: CodingKeys.timestamp)
+        
+        if let viewed = try? valueContainer.decode(Bool.self, forKey: CodingKeys.viewed) {
+            self.viewed = viewed
+        } else {
+            self.viewed = false
+        }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/YYYY - HH:mm"
-        return dateFormatter.date(from: self.timestamp)!
+        self.date = dateFormatter.date(from: self.timestamp)!
     }
+    
+
 }
