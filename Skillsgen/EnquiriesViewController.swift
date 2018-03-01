@@ -61,7 +61,11 @@ class EnquiriesViewController: UITableViewController {
                 newCount += 1
             }
         }
-        tabBarController?.tabBar.items?[1].badgeValue = String(newCount)
+        if newCount == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = String(newCount)
+        }
     }
     
     
