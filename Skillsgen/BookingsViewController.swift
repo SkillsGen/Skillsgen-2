@@ -70,6 +70,13 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         loadingView.layer.cornerRadius = 10
         
         dateLabel.text = createDateLabelString(month: month, year: year)
+        
+        BackendController.shared.fetchEnquiries { (bool) in
+            if bool == true {
+                self.updateBadgeNumber(BackendController.shared.enquiries)
+            }
+        }
+        updateBadgeNumber(BackendController.shared.enquiries)
         updateUI()
     }
 
@@ -131,6 +138,21 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
+    
+    func updateBadgeNumber(_ enquiries: [Enquiry]) {
+        var newCount: Int = 0
+        for enquiry in enquiries {
+            if enquiry.viewed == false {
+                newCount += 1
+            }
+        }
+        if newCount == 0 {
+            tabBarController?.tabBar.items?[1].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[1].badgeValue = String(newCount)
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

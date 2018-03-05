@@ -10,6 +10,7 @@ import UIKit
 
 class EnquiriesViewController: UITableViewController {
     var enquiries: [Enquiry] = []
+    var checked: Bool = false
     let errorLoadingView = UIView()
     let errorLoadingMessage = UILabel()
     let errorRetryButton = UIButton()
@@ -17,8 +18,11 @@ class EnquiriesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpErrorView()
-        
-        updateUI()
+        enquiries = BackendController.shared.enquiries
+        if !checked {
+            checked = true
+            updateUI()
+        }
     }
     
     @objc func retryButtonTapped(_ sender: UIButton) {
@@ -33,10 +37,10 @@ class EnquiriesViewController: UITableViewController {
     
     func updateUI() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        BackendController.shared.fetchEnquiries() { (enquiries) in
-            if let enquiries = enquiries {
+        BackendController.shared.fetchEnquiries() { (bool) in
+            if bool == true {
                 DispatchQueue.main.async {
-                    self.enquiries = enquiries
+                    self.enquiries = BackendController.shared.enquiries
                     self.tableView.reloadData()
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self.errorLoadingView.isHidden = true
@@ -44,9 +48,9 @@ class EnquiriesViewController: UITableViewController {
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.enquiries = []
+                    self.enquiries = BackendController.shared.enquiries
                     self.tableView.reloadData()
-                    self.errorLoadingView.isHidden = false
+                    // self.errorLoadingView.isHidden = false
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
             }

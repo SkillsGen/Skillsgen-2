@@ -45,7 +45,7 @@ class BackendController {
         task.resume()
     }
     
-    func fetchEnquiries(completion: @escaping ([Enquiry]?) -> Void) {
+    func fetchEnquiries(completion: @escaping (Bool) -> Void) {
         
         var components = URLComponents(url: Config.baseURL, resolvingAgainstBaseURL: true)!
         components.queryItems = [
@@ -59,9 +59,10 @@ class BackendController {
             if let data = data,
                let enquiries = try? jsonDecoder.decode([Enquiry].self, from: data)
             {
-                completion(self.enquiriesFile(enquiries))
+                self.enquiriesFile(enquiries)
+                completion(true)
             } else {
-                completion(nil)
+                completion(false)
             }
         }
         task.resume()
@@ -78,8 +79,12 @@ class BackendController {
         if let retrievedEnquiries = try? Data(contentsOf: archiveURL),
            let decodedEnquiries = try? propertyListDecoder.decode(Array<Enquiry>.self, from: retrievedEnquiries)
         {
-            let newEnquiriesCount = enquiriesFromServer.count - decodedEnquiries.count
-            newEnquiryList = Array(enquiriesFromServer.prefix(newEnquiriesCount)) + decodedEnquiries
+            if(enquiriesFromServer.count > decodedEnquiries.count) {
+                let newEnquiriesCount = enquiriesFromServer.count - decodedEnquiries.count
+                newEnquiryList = Array(enquiriesFromServer.prefix(newEnquiriesCount)) + decodedEnquiries
+            } else {
+                newEnquiryList = decodedEnquiries
+            }
         } else {
             newEnquiryList = enquiriesFromServer
         }
@@ -104,6 +109,15 @@ class BackendController {
         let propertyListEncoder = PropertyListEncoder()
         
         let encodedEnquiries = try? propertyListEncoder.encode(self.enquiries)
+        try? encodedEnquiries?.write(to: archiveURL, options: .noFileProtection)
+    }
+    
+    func resetEnquiries() {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveURL = documentsDirectory.appendingPathComponent("enquiries").appendingPathExtension("plist")
+        let propertyListEncoder = PropertyListEncoder()
+        
+        let encodedEnquiries = try? propertyListEncoder.encode([])
         try? encodedEnquiries?.write(to: archiveURL, options: .noFileProtection)
     }
 }
