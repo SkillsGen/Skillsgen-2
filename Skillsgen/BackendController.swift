@@ -70,7 +70,7 @@ class BackendController {
     
     // Redo This! This is not robust, what if an enquiry is deleted? etc
     
-    func enquiriesFile(_ enquiriesFromServer: [Enquiry]) -> [Enquiry] {
+    func enquiriesFile(_ enquiriesFromServer: [Enquiry]) {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let archiveURL = documentsDirectory.appendingPathComponent("enquiries").appendingPathExtension("plist")
         let propertyListDecoder = PropertyListDecoder()
@@ -89,13 +89,10 @@ class BackendController {
             newEnquiryList = enquiriesFromServer
         }
         
-        let propertyListEncoder = PropertyListEncoder()
-        let encodedEnquiries = try? propertyListEncoder.encode(newEnquiryList)
-        try? encodedEnquiries?.write(to: archiveURL, options: .noFileProtection)
-        
         self.enquiries = newEnquiryList
-        return newEnquiryList
+        writeEnquiries()
     }
+    
     
     func updateEnquiry(enquiry: Enquiry) {
         for (i, _) in enquiries.enumerated() {
@@ -104,6 +101,11 @@ class BackendController {
                 break
             }
         }
+        writeEnquiries()
+    }
+    
+    
+    func writeEnquiries() {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let archiveURL = documentsDirectory.appendingPathComponent("enquiries").appendingPathExtension("plist")
         let propertyListEncoder = PropertyListEncoder()
@@ -111,6 +113,7 @@ class BackendController {
         let encodedEnquiries = try? propertyListEncoder.encode(self.enquiries)
         try? encodedEnquiries?.write(to: archiveURL, options: .noFileProtection)
     }
+    
     
     func resetEnquiries() {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

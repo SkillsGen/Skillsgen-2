@@ -73,7 +73,9 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         BackendController.shared.fetchEnquiries { (bool) in
             if bool == true {
-                self.updateBadgeNumber(BackendController.shared.enquiries)
+                DispatchQueue.main.async {
+                    self.updateBadgeNumber(BackendController.shared.enquiries)
+                }                
             }
         }
         updateBadgeNumber(BackendController.shared.enquiries)
