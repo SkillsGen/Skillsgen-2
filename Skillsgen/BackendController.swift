@@ -13,7 +13,6 @@ class BackendController {
     var enquiries: [Enquiry] = []
     
     func fetchBookings(month: Int, year: Int, completion: @escaping ([Booking]?) -> Void)  {
-        
         let yearString = String(year)
         var monthString = ""
         if month < 10 {
