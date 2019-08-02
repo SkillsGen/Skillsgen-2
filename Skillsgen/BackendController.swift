@@ -21,6 +21,9 @@ class BackendController {
             monthString = String(month)
         }
         
+        let Pass = GeneratePass(KeyString: Config.KeyString)
+        print(Pass)
+        
         var components = URLComponents(url: Config.baseURL, resolvingAgainstBaseURL: true)!
         components.queryItems = [
             URLQueryItem(name: "query", value: "booking"),

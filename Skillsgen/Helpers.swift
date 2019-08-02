@@ -8,6 +8,30 @@
 
 import Foundation
 import UIKit
+import CryptoSwift
+
+func GeneratePass(KeyString: String) -> String {
+    let dateFormatter = DateFormatter()
+    let date = Date()
+    
+    dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+    dateFormatter.dateFormat = "MMddHHmm"
+    
+    let DateString = dateFormatter.string(from: date)
+    let TimeBytes = DateString.bytes.sha256()
+    
+    let KeyBytes = Array<UInt8>(hex: KeyString)
+    
+    var Output: Array<UInt8> = Array()
+    for index in 0..<KeyBytes.count {
+        Output.append(TimeBytes[index] ^ KeyBytes[index])
+    }
+    
+    Output = Output.sha256()
+    
+    return Output.toHexString()
+}
+
 
 func intToBool(_ int:Int) -> Bool {
     if int == 1 {
