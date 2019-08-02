@@ -58,11 +58,11 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         self.view.addGestureRecognizer(swipeRight)
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(swipeLeft)
         
         retryButton.isHidden = true
@@ -84,7 +84,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     @objc func swipe(_ gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            if swipeGesture.direction == UISwipeGestureRecognizerDirection.left {
+            if swipeGesture.direction == UISwipeGestureRecognizer.Direction.left {
                 if month < 12 {
                     month += 1
                 } else {
@@ -92,7 +92,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
                     year += 1
                 }
                 updateUI()
-            } else if swipeGesture.direction == UISwipeGestureRecognizerDirection.right {
+            } else if swipeGesture.direction == UISwipeGestureRecognizer.Direction.right {
                 if self.month > 1 {
                     self.month -= 1
                 } else {
