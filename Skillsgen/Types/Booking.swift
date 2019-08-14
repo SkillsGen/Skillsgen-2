@@ -13,7 +13,7 @@ struct Booking: Codable {
     var date: Date
     var start: String
     var course: String
-    var duration: Int
+    var duration: Float
     var trainer: String
     var `private`: Bool
     var cancelled: Bool
@@ -87,6 +87,6 @@ struct Booking: Codable {
         self.cancelled = intToBool(cancelledInt)
         
         let durationString: String = try! valueContainer.decode(String.self, forKey: CodingKeys.duration)
-        self.duration = Int(durationString)!
+        self.duration = Float(durationString)!
     }
 }
