@@ -26,7 +26,6 @@
 		207681F71FE94286006ACFC3 /* BackendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207681F61FE94286006ACFC3 /* BackendController.swift */; };
 		207797B11FEBC974001CE80A /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207797B01FEBC973001CE80A /* OrderViewController.swift */; };
 		207797B31FEBDD7A001CE80A /* LineItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207797B21FEBDD7A001CE80A /* LineItemTableViewCell.swift */; };
-		20B94EA522F4BEF40018753F /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CB8BBF22F4B43E0032A719 /* CryptoSwift.framework */; };
 		20B94EA622F4BEF40018753F /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20CB8BBF22F4B43E0032A719 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20CB8BD022F4BB450032A719 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CB8BBF22F4B43E0032A719 /* CryptoSwift.framework */; };
 /* End PBXBuildFile section */
@@ -128,7 +127,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				20CB8BD022F4BB450032A719 /* CryptoSwift.framework in Frameworks */,
-				20B94EA522F4BEF40018753F /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +235,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Sebastian Reinolds";
 				TargetAttributes = {
 					207681D61FE94175006ACFC3 = {
@@ -406,6 +404,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -431,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -465,6 +464,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -484,11 +484,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				VALIDATE_PRODUCT = YES;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
 		};
@@ -534,7 +534,7 @@
 				207681E81FE94175006ACFC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		207681E91FE94175006ACFC3 /* Build configuration list for PBXNativeTarget "Skillsgen" */ = {
 			isa = XCConfigurationList;
@@ -543,7 +543,7 @@
 				207681EB1FE94175006ACFC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
