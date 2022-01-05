@@ -10,7 +10,6 @@ import Foundation
 
 class BackendController {
     static let shared = BackendController()
-    //var enquiries: [Enquiry] = []
     var dynamicEnquiries: [Int:DynamicEnquiry] = [:]
     
     var alreadyChecking = false

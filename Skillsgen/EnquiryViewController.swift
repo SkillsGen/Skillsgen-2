@@ -11,7 +11,6 @@ import UIKit
 class EnquiryViewController: UIViewController {
 
     var dynamicEnquiry: DynamicEnquiry!
-    var enquiry: Enquiry!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,18 +20,7 @@ class EnquiryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*
-        dateLabel.text = enquiry.timestamp
-        nameLabel.text = enquiry.name
-        if let phone = enquiry.phone {
-            phoneLabel.text = phone
-        }
-        emailLabel.text = enquiry.email
-        enqLabel.text = enquiry.enquiry
-        BackendController.shared.updateEnquiry(enquiry: enquiry)
-         */
-        
+
         dateLabel.text = dynamicEnquiry.timestamp
         nameLabel.text = dynamicEnquiry.name
         if let phone = dynamicEnquiry.phone {

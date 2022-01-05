@@ -71,7 +71,6 @@ class EnquiriesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return BackendController.shared.dynamicEnquiries.count
-        //return enquiries.count
     }
     
     
