@@ -8,10 +8,7 @@
 
 import UIKit
 
-class EnquiriesViewController: UITableViewController {
-    //var enquiries: [Enquiry] = []
-//    var dynamicEnquiries: [Int:DynamicEnquiry] = [:]
-    
+class EnquiriesViewController: UITableViewController {    
     var totalEnquiries: Int = 0
     var checked: Bool = false
     let errorLoadingView = UIView()
@@ -21,9 +18,7 @@ class EnquiriesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpErrorView()
-        //enquiries = BackendController.shared.enquiries
-//        dynamicEnquiries = BackendController.shared.dynamicEnquiries
-        
+
         updateUI()
     }
     
@@ -84,43 +79,14 @@ class EnquiriesViewController: UITableViewController {
         let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
         if(bottomEdge >= scrollView.contentSize.height)
         {
-//            print("bottom")
+            //NOTE: scrolled off bottom
             self.updateUI()
-            /*
-            if BackendController.shared.dynamicEnquiries.keys.min() != 0 {
-                BackendController.shared.dynamicFetchEnquiries { (bool) in
-                    if bool == true {
-                        self.tableView.reloadData()
-                        self.updateBadgeNumber()
-                    }
-                }
-            }
-             */
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EnquiryCell", for: indexPath)
-        
-        /*
-        let enquiry = enquiries[indexPath.row]
-        cell.textLabel?.text = enquiry.name
-        cell.detailTextLabel?.text = enquiry.timestamp
-        if enquiry.viewed == false {
-            cell.backgroundColor = .red
-        } else {
-            cell.backgroundColor = .white
-        }
-        */
-        
-        //NOTE: cannot handle deleted (non consecutive) ids
-        
-        /*
-        let newestID = BackendController.shared.dynamicEnquiries.keys.max()!
-        let Index = newestID - indexPath.row
-        let dynamicEnquiry = BackendController.shared.dynamicEnquiries[Index]!
-        */
-        
+
         let count = BackendController.shared.dynamicEnquiries.count
         let enquiryList = BackendController.shared.dynamicEnquiries.keys.sorted(by: <)
         let index = (count - indexPath.row) - 1
@@ -142,17 +108,7 @@ class EnquiriesViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EnquirySegue" {
             let enquiryViewController = segue.destination as! EnquiryViewController
-            
-            //let index = tableView.indexPathForSelectedRow!.row
-            //self.enquiries[index].viewed = true
-            //enquiryViewController.enquiry = enquiries[index]
-            
-            /*
-            let newestID = BackendController.shared.dynamicEnquiries.keys.max()!
-            let Index = newestID - tableView.indexPathForSelectedRow!.row  
-            let dynamicEnquiry = BackendController.shared.dynamicEnquiries[Index]!
-            */
-            
+
             let count = BackendController.shared.dynamicEnquiries.count
             let enquiryList = BackendController.shared.dynamicEnquiries.keys.sorted(by: <)
             let index = (count - tableView.indexPathForSelectedRow!.row) - 1

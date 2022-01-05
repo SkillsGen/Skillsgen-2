@@ -81,30 +81,8 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         loadingView.layer.cornerRadius = 10
         
         dateLabel.text = createDateLabelString(month: month, year: year)
-        
-        /*
-        BackendController.shared.dynamicFetchEnquiries { (bool) in
-            if bool == true {
-                DispatchQueue.main.async {
-                    self.updateBadgeNumber(BackendController.shared.dynamicEnquiries)
-                }
-            }
-            else {
-                DispatchQueue.main.async {
-                    BackendController.shared.alreadyChecking = false
-                }
-            }                
-        }
-        
-        BackendController.shared.fetchEnquiries { (bool) in
-            if bool == true {
-                DispatchQueue.main.async {
-//                    self.updateBadgeNumber(BackendController.shared.enquiries)
-                }                
-            }
-        }
-         */
         updateBadgeNumber(BackendController.shared.dynamicEnquiries)
+        
         updateUI()
     }
 
