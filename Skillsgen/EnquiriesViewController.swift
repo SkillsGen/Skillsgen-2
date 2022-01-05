@@ -9,7 +9,10 @@
 import UIKit
 
 class EnquiriesViewController: UITableViewController {
-    var enquiries: [Enquiry] = []
+    //var enquiries: [Enquiry] = []
+//    var dynamicEnquiries: [Int:DynamicEnquiry] = [:]
+    
+    var totalEnquiries: Int = 0
     var checked: Bool = false
     let errorLoadingView = UIView()
     let errorLoadingMessage = UILabel()
@@ -18,11 +21,10 @@ class EnquiriesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpErrorView()
-        enquiries = BackendController.shared.enquiries
-        if !checked {
-            checked = true
-            updateUI()
-        }
+        //enquiries = BackendController.shared.enquiries
+//        dynamicEnquiries = BackendController.shared.dynamicEnquiries
+        
+        updateUI()
     }
     
     @objc func retryButtonTapped(_ sender: UIButton) {
@@ -37,10 +39,9 @@ class EnquiriesViewController: UITableViewController {
     
     func updateUI() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        BackendController.shared.fetchEnquiries() { (bool) in
+        BackendController.shared.dynamicFetchEnquiries() { (bool) in
             if bool == true {
                 DispatchQueue.main.async {
-                    self.enquiries = BackendController.shared.enquiries
                     self.tableView.reloadData()
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self.errorLoadingView.isHidden = true
@@ -48,10 +49,10 @@ class EnquiriesViewController: UITableViewController {
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.enquiries = BackendController.shared.enquiries
                     self.tableView.reloadData()
-                    // self.errorLoadingView.isHidden = false
+                    self.errorLoadingView.isHidden = false
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    BackendController.shared.alreadyChecking = false
                 }
             }
         }
@@ -60,8 +61,8 @@ class EnquiriesViewController: UITableViewController {
     
     func updateBadgeNumber() {
         var newCount: Int = 0
-        for enquiry in self.enquiries {
-            if enquiry.viewed == false {
+        for enquiry in BackendController.shared.dynamicEnquiries {
+            if enquiry.value.viewed == false {
                 newCount += 1
             }
         }
@@ -74,12 +75,34 @@ class EnquiriesViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return enquiries.count
+        return BackendController.shared.dynamicEnquiries.count
+        //return enquiries.count
     }
     
     
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height
+        if(bottomEdge >= scrollView.contentSize.height)
+        {
+//            print("bottom")
+            self.updateUI()
+            /*
+            if BackendController.shared.dynamicEnquiries.keys.min() != 0 {
+                BackendController.shared.dynamicFetchEnquiries { (bool) in
+                    if bool == true {
+                        self.tableView.reloadData()
+                        self.updateBadgeNumber()
+                    }
+                }
+            }
+             */
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EnquiryCell", for: indexPath)
+        
+        /*
         let enquiry = enquiries[indexPath.row]
         cell.textLabel?.text = enquiry.name
         cell.detailTextLabel?.text = enquiry.timestamp
@@ -88,6 +111,30 @@ class EnquiriesViewController: UITableViewController {
         } else {
             cell.backgroundColor = .white
         }
+        */
+        
+        //NOTE: cannot handle deleted (non consecutive) ids
+        
+        /*
+        let newestID = BackendController.shared.dynamicEnquiries.keys.max()!
+        let Index = newestID - indexPath.row
+        let dynamicEnquiry = BackendController.shared.dynamicEnquiries[Index]!
+        */
+        
+        let count = BackendController.shared.dynamicEnquiries.count
+        let enquiryList = BackendController.shared.dynamicEnquiries.keys.sorted(by: <)
+        let index = (count - indexPath.row) - 1
+        let dynamicEnquiryKey = enquiryList[index]
+        let dynamicEnquiry = BackendController.shared.dynamicEnquiries[dynamicEnquiryKey]!
+        
+        cell.textLabel?.text = dynamicEnquiry.name
+        cell.detailTextLabel?.text = dynamicEnquiry.timestamp
+        if dynamicEnquiry.viewed == false {
+            cell.backgroundColor = .red
+        } else {
+            cell.backgroundColor = .white
+        }
+               
         return cell
     }
     
@@ -95,9 +142,24 @@ class EnquiriesViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EnquirySegue" {
             let enquiryViewController = segue.destination as! EnquiryViewController
-            let index = tableView.indexPathForSelectedRow!.row
-            self.enquiries[index].viewed = true
-            enquiryViewController.enquiry = enquiries[index]
+            
+            //let index = tableView.indexPathForSelectedRow!.row
+            //self.enquiries[index].viewed = true
+            //enquiryViewController.enquiry = enquiries[index]
+            
+            /*
+            let newestID = BackendController.shared.dynamicEnquiries.keys.max()!
+            let Index = newestID - tableView.indexPathForSelectedRow!.row  
+            let dynamicEnquiry = BackendController.shared.dynamicEnquiries[Index]!
+            */
+            
+            let count = BackendController.shared.dynamicEnquiries.count
+            let enquiryList = BackendController.shared.dynamicEnquiries.keys.sorted(by: <)
+            let index = (count - tableView.indexPathForSelectedRow!.row) - 1
+            let dynamicEnquiryKey = enquiryList[index]
+            let dynamicEnquiry = BackendController.shared.dynamicEnquiries[dynamicEnquiryKey]!
+            
+            enquiryViewController.dynamicEnquiry = dynamicEnquiry
         }
         self.updateBadgeNumber()
         self.tableView.reloadData()

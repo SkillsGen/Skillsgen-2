@@ -49,8 +49,19 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func retryButtonTapped(_ sender: Any) {
         retryButton.isHidden = true
         loadingActivityIndicator.isHidden = false
-        updateUI("Retrying...")
-        
+        BackendController.shared.dynamicFetchEnquiries { (bool) in
+            if bool == true {
+                DispatchQueue.main.async {
+                    self.updateBadgeNumber(BackendController.shared.dynamicEnquiries)
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    BackendController.shared.alreadyChecking = false
+                }
+            }
+        }
+        updateUI("Retrying...")        
     }
     
     
@@ -71,14 +82,29 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         dateLabel.text = createDateLabelString(month: month, year: year)
         
+        /*
+        BackendController.shared.dynamicFetchEnquiries { (bool) in
+            if bool == true {
+                DispatchQueue.main.async {
+                    self.updateBadgeNumber(BackendController.shared.dynamicEnquiries)
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    BackendController.shared.alreadyChecking = false
+                }
+            }                
+        }
+        
         BackendController.shared.fetchEnquiries { (bool) in
             if bool == true {
                 DispatchQueue.main.async {
-                    self.updateBadgeNumber(BackendController.shared.enquiries)
+//                    self.updateBadgeNumber(BackendController.shared.enquiries)
                 }                
             }
         }
-        updateBadgeNumber(BackendController.shared.enquiries)
+         */
+        updateBadgeNumber(BackendController.shared.dynamicEnquiries)
         updateUI()
     }
 
@@ -138,16 +164,30 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
         }
+        
+        BackendController.shared.dynamicFetchEnquiries { (bool) in
+            if bool == true {
+                DispatchQueue.main.async {
+                    self.updateBadgeNumber(BackendController.shared.dynamicEnquiries)
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    BackendController.shared.alreadyChecking = false
+                }
+            }
+        }
     }
 
     
-    func updateBadgeNumber(_ enquiries: [Enquiry]) {
+    func updateBadgeNumber(_ enquiries: [Int:DynamicEnquiry]) {
         var newCount: Int = 0
         for enquiry in enquiries {
-            if enquiry.viewed == false {
+            if enquiry.value.viewed == false {
                 newCount += 1
             }
         }
+        
         if newCount == 0 {
             tabBarController?.tabBar.items?[1].badgeValue = nil
         } else {
