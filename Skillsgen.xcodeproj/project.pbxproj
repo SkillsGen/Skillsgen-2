@@ -28,6 +28,8 @@
 		207797B31FEBDD7A001CE80A /* LineItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207797B21FEBDD7A001CE80A /* LineItemTableViewCell.swift */; };
 		20B94EA622F4BEF40018753F /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20CB8BBF22F4B43E0032A719 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20CB8BD022F4BB450032A719 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CB8BBF22F4B43E0032A719 /* CryptoSwift.framework */; };
+		ACB2EACD2A5EB14B0066257A /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2EACC2A5EB14B0066257A /* MetricsViewController.swift */; };
+		ACB2EAD32A5ED3580066257A /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2EAD22A5ED3580066257A /* Metrics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		207797B01FEBC973001CE80A /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		207797B21FEBDD7A001CE80A /* LineItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineItemTableViewCell.swift; sourceTree = "<group>"; };
 		20CB8BB622F4B43E0032A719 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		ACB2EACC2A5EB14B0066257A /* MetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewController.swift; sourceTree = "<group>"; };
+		ACB2EAD22A5ED3580066257A /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,7 @@
 				205F53BA1FE978CE0054FCBC /* BookingsViewController.swift */,
 				201DB5571FEA74B40080C845 /* BookingViewController.swift */,
 				201DB5551FEA6A170080C845 /* BookingTableViewCell.swift */,
+				ACB2EACC2A5EB14B0066257A /* MetricsViewController.swift */,
 				207797B01FEBC973001CE80A /* OrderViewController.swift */,
 				207797B21FEBDD7A001CE80A /* LineItemTableViewCell.swift */,
 				20196FCB204418A5004C9A8B /* EnquiriesViewController.swift */,
@@ -179,6 +184,7 @@
 			children = (
 				207681EC1FE94190006ACFC3 /* Booking.swift */,
 				207681EE1FE941C2006ACFC3 /* Order.swift */,
+				ACB2EAD22A5ED3580066257A /* Metrics.swift */,
 				207681F01FE941EC006ACFC3 /* LineItem.swift */,
 				207681F41FE94253006ACFC3 /* Delegate.swift */,
 				20196FCD2044195B004C9A8B /* Enquiry.swift */,
@@ -338,9 +344,11 @@
 				207681F71FE94286006ACFC3 /* BackendController.swift in Sources */,
 				207681DB1FE94175006ACFC3 /* AppDelegate.swift in Sources */,
 				201DB5581FEA74B40080C845 /* BookingViewController.swift in Sources */,
+				ACB2EAD32A5ED3580066257A /* Metrics.swift in Sources */,
 				207797B11FEBC974001CE80A /* OrderViewController.swift in Sources */,
 				20196FCC204418A5004C9A8B /* EnquiriesViewController.swift in Sources */,
 				201DB5561FEA6A170080C845 /* BookingTableViewCell.swift in Sources */,
+				ACB2EACD2A5EB14B0066257A /* MetricsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

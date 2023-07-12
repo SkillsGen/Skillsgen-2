@@ -108,5 +108,29 @@ class BackendController {
             }
         }
         task.resume()
-    }    
+    }
+    func fetchMetrics(bookingid: Int, completion: @escaping ([Metric]?) -> Void)  {
+        let bookingIdString = String(bookingid)
+        
+        var components = URLComponents(url: Config.baseURL, resolvingAgainstBaseURL: true)!
+        components.queryItems = [
+            URLQueryItem(name: "query", value: "metrics"),
+            URLQueryItem(name: "bookingid", value: bookingIdString),
+            URLQueryItem(name: "pass", value: GeneratePass(KeyString: Config.KeyString))
+        ]
+        
+        let url = components.url!
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            let jsonDecoder = JSONDecoder()
+            if let data = data,
+                let metrics = try? jsonDecoder.decode([Metric].self, from: data)
+            {
+                completion(metrics)
+            } else {
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
 }
