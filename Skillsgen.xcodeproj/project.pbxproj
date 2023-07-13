@@ -30,6 +30,7 @@
 		20CB8BD022F4BB450032A719 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CB8BBF22F4B43E0032A719 /* CryptoSwift.framework */; };
 		ACB2EACD2A5EB14B0066257A /* MetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2EACC2A5EB14B0066257A /* MetricsViewController.swift */; };
 		ACB2EAD32A5ED3580066257A /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2EAD22A5ED3580066257A /* Metrics.swift */; };
+		ACB2EAF32A6016AF0066257A /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2EAF22A6016AF0066257A /* CommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		20CB8BB622F4B43E0032A719 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		ACB2EACC2A5EB14B0066257A /* MetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewController.swift; sourceTree = "<group>"; };
 		ACB2EAD22A5ED3580066257A /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
+		ACB2EAF22A6016AF0066257A /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				201DB5571FEA74B40080C845 /* BookingViewController.swift */,
 				201DB5551FEA6A170080C845 /* BookingTableViewCell.swift */,
 				ACB2EACC2A5EB14B0066257A /* MetricsViewController.swift */,
+				ACB2EAF22A6016AF0066257A /* CommentTableViewCell.swift */,
 				207797B01FEBC973001CE80A /* OrderViewController.swift */,
 				207797B21FEBDD7A001CE80A /* LineItemTableViewCell.swift */,
 				20196FCB204418A5004C9A8B /* EnquiriesViewController.swift */,
@@ -347,6 +350,7 @@
 				ACB2EAD32A5ED3580066257A /* Metrics.swift in Sources */,
 				207797B11FEBC974001CE80A /* OrderViewController.swift in Sources */,
 				20196FCC204418A5004C9A8B /* EnquiriesViewController.swift in Sources */,
+				ACB2EAF32A6016AF0066257A /* CommentTableViewCell.swift in Sources */,
 				201DB5561FEA6A170080C845 /* BookingTableViewCell.swift in Sources */,
 				ACB2EACD2A5EB14B0066257A /* MetricsViewController.swift in Sources */,
 			);

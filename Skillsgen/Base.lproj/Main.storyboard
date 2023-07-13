@@ -730,7 +730,7 @@
                                                 <accessibility key="accessibilityConfiguration" label="Metrics"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Metrics" titleAlignment="center"/>
                                                 <connections>
-                                                    <segue destination="7ak-sX-Tlc" kind="show" id="f71-6M-mfE"/>
+                                                    <segue destination="7ak-sX-Tlc" kind="show" identifier="MetricSegue" id="f71-6M-mfE"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -888,14 +888,77 @@
                     <view key="view" contentMode="scaleToFill" id="Svj-Ij-Xra">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IPX-El-5vs">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAG-aT-4ee">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="311.66666666666669"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Id-hU-3pr">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="311.66666666666669"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uj9-YE-mH2">
+                                        <rect key="frame" x="0.0" y="311.66666666666674" width="414" height="311.33333333333326"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="OJx-mF-l5S" customClass="CommentTableViewCell" customModule="Skillsgen" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="50" width="414" height="0.3333333432674408"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OJx-mF-l5S" id="11D-qX-P6G">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="0.3333333432674408"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-my-Q8w">
+                                                            <rect key="frame" x="8" y="0.0" width="398" height="0.33333333333333331"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
+                                                    <constraints>
+                                                        <constraint firstItem="3xj-my-Q8w" firstAttribute="leading" secondItem="11D-qX-P6G" secondAttribute="leading" constant="8" id="VXH-ji-CjL"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3xj-my-Q8w" secondAttribute="trailing" constant="8" id="blh-PR-uq4"/>
+                                                        <constraint firstAttribute="bottom" secondItem="3xj-my-Q8w" secondAttribute="bottom" id="paK-OW-9XW"/>
+                                                        <constraint firstItem="3xj-my-Q8w" firstAttribute="top" secondItem="11D-qX-P6G" secondAttribute="top" id="s9h-qL-Y5I"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="comment" destination="3xj-my-Q8w" id="ggv-6A-R0i"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="7ak-sX-Tlc" id="kae-t3-Rgx"/>
+                                            <outlet property="delegate" destination="7ak-sX-Tlc" id="2GP-D0-mQy"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ZQm-aN-Xpx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="IPX-El-5vs" firstAttribute="leading" secondItem="ZQm-aN-Xpx" secondAttribute="leading" id="85f-VY-Cy2"/>
+                            <constraint firstItem="ZQm-aN-Xpx" firstAttribute="bottom" secondItem="IPX-El-5vs" secondAttribute="bottom" id="Mud-Cd-tPZ"/>
+                            <constraint firstItem="IPX-El-5vs" firstAttribute="top" secondItem="ZQm-aN-Xpx" secondAttribute="top" id="Sat-hf-86Z"/>
+                            <constraint firstItem="IPX-El-5vs" firstAttribute="centerX" secondItem="Svj-Ij-Xra" secondAttribute="centerX" id="u5b-oQ-ovI"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Metrics" id="hpr-1J-YOs"/>
+                    <connections>
+                        <outlet property="commentsTable" destination="Uj9-YE-mH2" id="6Xd-CR-pDh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bv2-3r-20V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3358" y="5"/>
+            <point key="canvasLocation" x="3357.971014492754" y="4.8913043478260869"/>
         </scene>
     </scenes>
     <resources>

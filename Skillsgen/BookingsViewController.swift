@@ -219,6 +219,4 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
     }
-    
-
 }

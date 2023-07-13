@@ -133,7 +133,11 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
             destination.order = booking!.orders![selectedIndexPath.row]
             destination.booking = booking!
         }
-    }
-    
-
+        else if segue.identifier == "MetricSegue" {
+            let destination = segue.destination as! MetricsViewController
+            if let booking = self.booking {
+                destination.booking_id = booking.id
+            }
+        }
+    }    
 }

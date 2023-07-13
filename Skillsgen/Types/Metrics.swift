@@ -21,7 +21,7 @@ struct Metric: Codable {
     var q9: Int
     var q10: Int
     var q11: Int    
-    var comment: String?
+    var comment: String
     var uplift: String
 
 
@@ -56,7 +56,7 @@ struct Metric: Codable {
         self.q9  = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
         self.q10 = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
         self.q11 = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
-        self.comment = try? valueContainer.decode(String.self, forKey: CodingKeys.comment)
+        self.comment = try valueContainer.decode(String.self, forKey: CodingKeys.comment)
         self.uplift  = try valueContainer.decode(String.self, forKey: CodingKeys.uplift)
     }
 }
