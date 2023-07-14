@@ -8,19 +8,12 @@
 
 import Foundation
 
-struct Metric: Codable {
+struct Metric: Decodable {
     var id: Int
-    var q1: Int
-    var q2: Int
-    var q3: Int
-    var q4: Int
-    var q5: Int
-    var q6: Int
-    var q7: Int
-    var q8: Int
-    var q9: Int
-    var q10: Int
-    var q11: Int    
+    
+    var questionArray: [Int]
+
+    
     var comment: String
     var uplift: String
 
@@ -45,17 +38,20 @@ struct Metric: Codable {
     init(from decoder: Decoder) throws {
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try valueContainer.decode(Int.self, forKey: CodingKeys.id)
-        self.q1  = try valueContainer.decode(Int.self, forKey: CodingKeys.q1)
-        self.q2  = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
-        self.q3  = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
-        self.q4  = try valueContainer.decode(Int.self, forKey: CodingKeys.q1)
-        self.q5  = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
-        self.q6  = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
-        self.q7  = try valueContainer.decode(Int.self, forKey: CodingKeys.q1)
-        self.q8  = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
-        self.q9  = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
-        self.q10 = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
-        self.q11 = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
+        
+        self.questionArray = [Int](repeating: 0, count: 11)
+        self.questionArray[0]  = try valueContainer.decode(Int.self, forKey: CodingKeys.q1)
+        self.questionArray[1]  = try valueContainer.decode(Int.self, forKey: CodingKeys.q2)
+        self.questionArray[2]  = try valueContainer.decode(Int.self, forKey: CodingKeys.q3)
+        self.questionArray[3]  = try valueContainer.decode(Int.self, forKey: CodingKeys.q4)
+        self.questionArray[4]  = try valueContainer.decode(Int.self, forKey: CodingKeys.q5)
+        self.questionArray[5]  = try valueContainer.decode(Int.self, forKey: CodingKeys.q6)
+        self.questionArray[6]  = try valueContainer.decode(Int.self, forKey: CodingKeys.q7)
+        self.questionArray[7]  = try valueContainer.decode(Int.self, forKey: CodingKeys.q8)
+        self.questionArray[8]  = try valueContainer.decode(Int.self, forKey: CodingKeys.q9)
+        self.questionArray[9]  = try valueContainer.decode(Int.self, forKey: CodingKeys.q10)
+        self.questionArray[10] = try valueContainer.decode(Int.self, forKey: CodingKeys.q11)
+
         self.comment = try valueContainer.decode(String.self, forKey: CodingKeys.comment)
         self.uplift  = try valueContainer.decode(String.self, forKey: CodingKeys.uplift)
     }

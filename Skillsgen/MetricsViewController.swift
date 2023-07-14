@@ -14,22 +14,52 @@ class MetricsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var comments: [String] = []
     
+    @IBOutlet weak var NoOfResponses: UILabel!
+    @IBOutlet weak var Excellent: UILabel!
+    @IBOutlet weak var Good: UILabel!
+    @IBOutlet weak var Satisfactory: UILabel!
+    @IBOutlet weak var BelowAverage: UILabel!
+    @IBOutlet weak var Poor: UILabel!
     @IBOutlet weak var commentsTable: UITableView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        print("hello world")
+        super.viewDidLoad()        
         self.commentsTable.estimatedRowHeight = 44.0
         self.commentsTable.rowHeight = UITableView.automaticDimension
         self.commentsTable.separatorStyle = .singleLine
         
-
+        NoOfResponses.text = "Responses: 0"
+        Excellent.text = "Excellent: 0%"
+        Good.text = "Good: 0%"
+        Satisfactory.text = "Satisfactory: 0%"
+        BelowAverage.text = "BelowAverage: 0%"
+        Poor.text = "Poor: 0%"
 
         BackendController.shared.fetchMetrics(bookingid: booking_id!) { (metrics) in
             if let metrics = metrics {
                 DispatchQueue.main.async {
+                    var ExcellentCount = 0
+                    var GoodCount = 0
+                    var SatisfactoryCount = 0
+                    var BelowAverageCount = 0
+                    var PoorCount = 0
+                    
+                    var questionCount = 0
                     self.metrics = metrics
                     for metric in metrics {
+                        questionCount = metric.questionArray.count
+                        for question in metric.questionArray {
+                            switch question {
+                            case 1: PoorCount += 1
+                            case 2: BelowAverageCount += 1
+                            case 3: SatisfactoryCount += 1
+                            case 4: GoodCount += 1
+                            case 5: ExcellentCount += 1
+                            default:
+                                print("i don't want to do anything in this case but i have to so i printed this string thanks swift")
+                            }
+                        }
+                        
                         var validComment = false
                         if metric.comment.count > 0 {
                             for char in metric.comment {
@@ -45,6 +75,18 @@ class MetricsViewController: UIViewController, UITableViewDelegate, UITableViewD
                         }
                     }
                     self.commentsTable.reloadData()
+                    
+                    self.NoOfResponses.text = "Responses: \(metrics.count)"
+                    let excellentPercent = Float(ExcellentCount)/(Float(metrics.count)*Float(questionCount)) * 100
+                    self.Excellent.text = "Excellent: \(excellentPercent.rounded())%"
+                    let goodPercent = Float(GoodCount)/(Float(metrics.count)*Float(questionCount)) * 100
+                    self.Good.text = "Good: \(goodPercent.rounded())%"
+                    let satisfactoryPercent = Float(SatisfactoryCount)/(Float(metrics.count)*Float(questionCount)) * 100
+                    self.Satisfactory.text = "Satisfactory: \(satisfactoryPercent.rounded())%"
+                    let belowAveragePercent = Float(BelowAverageCount)/(Float(metrics.count)*Float(questionCount)) * 100
+                    self.BelowAverage.text = "BelowAverage: \(belowAveragePercent.rounded())%"
+                    let poorPercent = Float(PoorCount)/(Float(metrics.count)*Float(questionCount)) * 100
+                    self.Poor.text = "Poor: \(poorPercent.rounded())%"
                 }
             } else {
                 DispatchQueue.main.async {
