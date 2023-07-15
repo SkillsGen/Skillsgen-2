@@ -28,13 +28,7 @@ class MetricsViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.commentsTable.rowHeight = UITableView.automaticDimension
         self.commentsTable.separatorStyle = .singleLine
         
-        NoOfResponses.text = "Responses: 0"
-        Excellent.text = "Excellent: 0%"
-        Good.text = "Good: 0%"
-        Satisfactory.text = "Satisfactory: 0%"
-        BelowAverage.text = "BelowAverage: 0%"
-        Poor.text = "Poor: 0%"
-
+        
         BackendController.shared.fetchMetrics(bookingid: booking_id!) { (metrics) in
             if let metrics = metrics {
                 DispatchQueue.main.async {
@@ -45,52 +39,59 @@ class MetricsViewController: UIViewController, UITableViewDelegate, UITableViewD
                     var PoorCount = 0
                     
                     var questionCount = 0
-                    self.metrics = metrics
-                    for metric in metrics {
-                        questionCount = metric.questionArray.count
-                        for question in metric.questionArray {
-                            switch question {
-                            case 1: PoorCount += 1
-                            case 2: BelowAverageCount += 1
-                            case 3: SatisfactoryCount += 1
-                            case 4: GoodCount += 1
-                            case 5: ExcellentCount += 1
-                            default:
-                                print("i don't want to do anything in this case but i have to so i printed this string thanks swift")
-                            }
-                        }
-                        
-                        var validComment = false
-                        if metric.comment.count > 0 {
-                            for char in metric.comment {
-                                if char != " " {
-                                    validComment = true
-                                    break
+                    if metrics.count > 0
+                    {
+                        self.metrics = metrics
+                        for metric in metrics {
+                            questionCount = metric.questionArray.count
+                            for question in metric.questionArray {
+                                switch question {
+                                case 1: PoorCount += 1
+                                case 2: BelowAverageCount += 1
+                                case 3: SatisfactoryCount += 1
+                                case 4: GoodCount += 1
+                                case 5: ExcellentCount += 1
+                                default:
+                                    print("i don't want to do anything in this case but i have to so i printed this string thanks swift")
                                 }
                             }
+                            
+                            var validComment = false
+                            if metric.comment.count > 0 {
+                                for char in metric.comment {
+                                    if char != " " {
+                                        validComment = true
+                                        break
+                                    }
+                                }
+                            }
+                            
+                            if validComment {
+                                self.comments.append(metric.comment)
+                            }
                         }
-
-                        if validComment {
-                            self.comments.append(metric.comment)
-                        }
+                        self.commentsTable.reloadData()
+                        
+                        self.NoOfResponses.text = "Responses: \(metrics.count)"
+                        let excellentPercent = Float(ExcellentCount)/(Float(metrics.count)*Float(questionCount)) * 100
+                        self.Excellent.text = "Excellent: \(excellentPercent.rounded())%"
+                        let goodPercent = Float(GoodCount)/(Float(metrics.count)*Float(questionCount)) * 100
+                        self.Good.text = "Good: \(goodPercent.rounded())%"
+                        let satisfactoryPercent = Float(SatisfactoryCount)/(Float(metrics.count)*Float(questionCount)) * 100
+                        self.Satisfactory.text = "Satisfactory: \(satisfactoryPercent.rounded())%"
+                        let belowAveragePercent = Float(BelowAverageCount)/(Float(metrics.count)*Float(questionCount)) * 100
+                        self.BelowAverage.text = "BelowAverage: \(belowAveragePercent.rounded())%"
+                        let poorPercent = Float(PoorCount)/(Float(metrics.count)*Float(questionCount)) * 100
+                        self.Poor.text = "Poor: \(poorPercent.rounded())%"
                     }
-                    self.commentsTable.reloadData()
-                    
-                    self.NoOfResponses.text = "Responses: \(metrics.count)"
-                    let excellentPercent = Float(ExcellentCount)/(Float(metrics.count)*Float(questionCount)) * 100
-                    self.Excellent.text = "Excellent: \(excellentPercent.rounded())%"
-                    let goodPercent = Float(GoodCount)/(Float(metrics.count)*Float(questionCount)) * 100
-                    self.Good.text = "Good: \(goodPercent.rounded())%"
-                    let satisfactoryPercent = Float(SatisfactoryCount)/(Float(metrics.count)*Float(questionCount)) * 100
-                    self.Satisfactory.text = "Satisfactory: \(satisfactoryPercent.rounded())%"
-                    let belowAveragePercent = Float(BelowAverageCount)/(Float(metrics.count)*Float(questionCount)) * 100
-                    self.BelowAverage.text = "BelowAverage: \(belowAveragePercent.rounded())%"
-                    let poorPercent = Float(PoorCount)/(Float(metrics.count)*Float(questionCount)) * 100
-                    self.Poor.text = "Poor: \(poorPercent.rounded())%"
+                    else
+                    {
+                        self.NoOfResponses.text = "No metrics submitted yet"                        
+                    }
                 }
             } else {
                 DispatchQueue.main.async {
-                   print("something went wrong fetching metrics")
+                    self.NoOfResponses.text = "Couldn't fetch metrics"
                 }
             }
         }
