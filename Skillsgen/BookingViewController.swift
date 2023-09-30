@@ -11,9 +11,9 @@ import UIKit
 class BookingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var booking: Booking?
-    let dateFormatter = DateFormatter()
     
     @IBOutlet weak var bookingIdLabel: UILabel!
+    @IBOutlet weak var Day: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -90,9 +90,15 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         
+        let dayFormatter = DateFormatter()
+        dayFormatter.dateFormat = "EEEE"
+        
         bookingIdLabel.text = "ID: " + String(booking!.id)
+        Day.text = dayFormatter.string(from: booking!.date)
+        
         dateLabel.text = dateFormatter.string(from: booking!.date)
         startTimeLabel.text = booking!.start
         locationLabel.text = "Location: " + booking!.location

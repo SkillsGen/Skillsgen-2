@@ -187,10 +187,15 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookingCellIdentifier", for: indexPath) as! BookingTableViewCell
         
-        cell.cellDateFormatter.dateFormat = "d"
+        let nameDateFormatter = DateFormatter()
+        nameDateFormatter.dateFormat = "EEE"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        
         let booking = bookings[indexPath.row]
         
-        cell.dayOfMonthLabel?.text = cell.cellDateFormatter.string(from: booking.date)
+        cell.dayOfMonthLabel?.text = dateFormatter.string(from: booking.date)
+        cell.dayNameLabel?.text = nameDateFormatter.string(from: booking.date)
         cell.courseLabel?.text = booking.course
         cell.trainerLabel?.text = booking.trainer
         cell.noOfDelegatesLabel?.text = String(booking.delCount)

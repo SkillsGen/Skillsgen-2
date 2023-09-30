@@ -11,13 +11,11 @@ import UIKit
 class BookingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dayOfMonthLabel: UILabel!
+    @IBOutlet weak var dayNameLabel: UILabel!
     @IBOutlet weak var courseLabel: UILabel!
     @IBOutlet weak var customerLabel: UILabel!
     @IBOutlet weak var noOfDelegatesLabel: UILabel!
     @IBOutlet weak var trainerLabel: UILabel!
-    
-    let cellDateFormatter = DateFormatter()
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
