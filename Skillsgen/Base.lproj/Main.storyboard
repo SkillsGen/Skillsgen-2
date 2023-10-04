@@ -336,6 +336,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.95475016917417832" green="0.95322034763141761" blue="0.97994251943005184" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="courseLabel" destination="FiI-nj-kwO" id="dkn-pZ-V3d"/>
                                             <outlet property="customerLabel" destination="FHa-vK-v8b" id="LUM-Jx-c8h"/>
                                             <outlet property="dayNameLabel" destination="VIJ-gQ-ZNs" id="iis-M5-7jO"/>
                                             <outlet property="dayOfMonthLabel" destination="8a7-Nj-hka" id="Mvr-iV-K2S"/>
