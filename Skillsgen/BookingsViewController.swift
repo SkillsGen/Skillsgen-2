@@ -203,6 +203,7 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.trainerLabel?.textColor = .red
         } else {
             cell.trainerLabel?.text = booking.trainer
+            cell.trainerLabel?.textColor = .black
         }
         
         cell.noOfDelegatesLabel?.text = String(booking.delCount)

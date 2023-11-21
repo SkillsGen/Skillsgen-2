@@ -111,6 +111,7 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
             trainerLabel.textColor = .red
         } else {
             trainerLabel?.text = booking!.trainer
+            trainerLabel.textColor = .black
         }
         //trainerLabel.text = booking!.trainer
         
