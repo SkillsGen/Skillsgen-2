@@ -105,7 +105,14 @@ class BookingViewController: UIViewController, UITableViewDelegate, UITableViewD
         courseLabel.text = booking!.course
         delCodeLabel.text = "Delegate: " + booking!.delcode
         bookCodeLabel.text = "Booker: " + booking!.bookcode
-        trainerLabel.text = booking!.trainer
+        
+        if booking!.trainer == "Scheduled" {
+            trainerLabel.text = "NO TRAINER"
+            trainerLabel.textColor = .red
+        } else {
+            trainerLabel?.text = booking!.trainer
+        }
+        //trainerLabel.text = booking!.trainer
         
         if booking!.private {
             publicPrivateLabel.text = booking?.customer!

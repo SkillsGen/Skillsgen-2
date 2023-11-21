@@ -197,7 +197,14 @@ class BookingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.dayOfMonthLabel?.text = dateFormatter.string(from: booking.date)
         cell.dayNameLabel?.text = nameDateFormatter.string(from: booking.date)
         cell.courseLabel?.text = booking.course
-        cell.trainerLabel?.text = booking.trainer
+        
+        if booking.trainer == "Scheduled" {
+            cell.trainerLabel?.text = "NO TRAINER"
+            cell.trainerLabel?.textColor = .red
+        } else {
+            cell.trainerLabel?.text = booking.trainer
+        }
+        
         cell.noOfDelegatesLabel?.text = String(booking.delCount)
         
         if let customer = booking.customer {

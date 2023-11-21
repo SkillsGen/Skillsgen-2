@@ -38,7 +38,22 @@ class BackendController {
             if let data = data,
                 let bookings = try? jsonDecoder.decode([Booking].self, from: data)
             {
-                completion(bookings)
+                var result: [Booking] = []
+                for booking in bookings {
+                    
+                    let scheduledTrainer = "Scheduled"
+                    if booking.trainer == scheduledTrainer {
+
+                        if let orders: [Order] = booking.orders {
+                            if orders.count > 0 {
+                                result.append(booking)
+                            }
+                        }
+                    } else {
+                        result.append(booking)
+                    }
+                }
+                completion(result)
             } else {
                 completion(nil)
             }
